@@ -16,47 +16,6 @@
       "comment": "评论",
       "post_success": "感谢您联系我们。我们会尽快回复您。",
       "error_heading": "请调整以下内容："
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{count}} 件商品为 {{price}}",
-        "other": "{{count}} 件商品为 {{price}}"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}}/{{unit}}",
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "毫克",
-        "g": "克",
-        "kg": "千克",
-        "ml": "毫升",
-        "cl": "厘升",
-        "l": "升",
-        "m3": "立方米",
-        "mm": "毫米",
-        "cm": "厘米",
-        "m": "米",
-        "m2": "平方米",
-        "oz": "盎司",
-        "lb": "磅",
-        "floz": "液量盎司",
-        "pt": "品脱",
-        "qt": "夸脱",
-        "gal": "加仑",
-        "in": "英寸",
-        "ft": "英尺",
-        "yd": "码",
-        "ft2": "平均英尺",
-        "item": "商品"
-      },
-      "per_item_single_html": "单价为 {{price}}",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -78,7 +37,7 @@
     "search_results_count": "找到“{{ query }}”的 {{ count }} 条搜索结果",
     "search_results_no_results": "未找到“{{ query }}”的相关结果",
     "filters": "筛选条件",
-    "account": "打开账户下拉菜单",
+    "account": "打开账户菜单",
     "cart": "购物车",
     "cart_count": "购物车中的商品总数",
     "filter_count": {
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "加载产品推荐",
     "discount": "应用折扣码",
     "discount_applied": "已应用折扣码：{{ code }}",
-    "open_cart_drawer": "打开购物车抽屉",
+    "open_cart_drawer": "打开购物车",
     "inventory_status": "库存状态",
     "pause_video": "暂停视频",
     "localization_region_and_language": "打开区域和语言选择器",
-    "open_search_modal": "打开搜索模态窗口",
+    "open_search_modal": "打开搜索",
     "find_country": "查找国家/地区",
     "decrease_quantity": "减少数量",
-    "increase_quantity": "增加数量"
+    "increase_quantity": "增加数量",
+    "quantity": "数量"
   },
   "actions": {
     "add_to_cart": "添加到购物车",

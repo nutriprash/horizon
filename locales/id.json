@@ -16,47 +16,6 @@
       "comment": "Komentar",
       "post_success": "Terima kasih sudah menghubungi kami. Kami akan segera menghubungi Anda.",
       "error_heading": "Mohon sesuaikan:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} per {{count}} item",
-        "other": "{{price}} per {{count}} item"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} per {{unit}}",
-        "one": "{{price}} per {{count}}{{unit}}",
-        "other": "{{price}} per {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "kuart",
-        "gal": "gal",
-        "in": "in",
-        "ft": "kaki",
-        "yd": "yd",
-        "ft2": "kaki²",
-        "item": "item"
-      },
-      "per_item_single_html": "{{price}} setiap item",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -99,7 +58,8 @@
     "localization_region_and_language": "Buka selektor wilayah dan bahasa",
     "open_search_modal": "Buka pencarian",
     "decrease_quantity": "Kurangi jumlah",
-    "increase_quantity": "Tambah jumlah"
+    "increase_quantity": "Tambah jumlah",
+    "quantity": "Jumlah"
   },
   "actions": {
     "add_to_cart": "Tambahkan ke keranjang",

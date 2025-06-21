@@ -16,51 +16,7 @@
       "post_success": "Îți mulțumim că ne-ai contactat. Vom reveni cât mai curând posibil.",
       "error_heading": "Ajustează următoarele:"
     },
-    "payment_methods": "Metode de plată",
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} pentru {{count}} articol",
-        "other": "{{price}} pentru {{count}} articole",
-        "few": "{{price}} pentru {{count}} articole"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}",
-        "few": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} pentru {{unit}}",
-        "one": "{{price}} pentru {{count}}{{unit}}",
-        "other": "{{price}} pentru {{count}}{{unit}}",
-        "few": "{{price}} pentru {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "uncie",
-        "lb": "livră",
-        "floz": "uncie fluidă",
-        "pt": "pintă",
-        "qt": "sfert de galon",
-        "gal": "galon",
-        "in": "inch",
-        "ft": "picior",
-        "yd": "yard",
-        "ft2": "picior pătrat",
-        "item": "articol"
-      },
-      "per_item_single_html": "{{price}} bucata",
-      "per_unit_single_html": "{{price}}/{{unit}}"
-    }
+    "payment_methods": "Metode de plată"
   },
   "accessibility": {
     "play_model": "Redă modelul 3D",
@@ -86,7 +42,7 @@
       "other": "{{ count }} filtre aplicate",
       "few": "{{ count }} filtre aplicate"
     },
-    "account": "Deschide meniul vertical al contului",
+    "account": "Deschide meniul Cont",
     "cart": "Coș",
     "cart_count": "Total articole în coș",
     "menu": "Meniu",
@@ -96,14 +52,15 @@
     "loading_product_recommendations": "Se încarcă recomandările de produse",
     "discount": "Aplică un cod de reducere",
     "discount_applied": "Cod de reducere aplicat: {{ code }}",
-    "open_cart_drawer": "Deschide sertarul coșului",
+    "open_cart_drawer": "Deschide coșul",
     "pause_video": "Pune pe pauză videoclipul",
     "inventory_status": "Stare inventar",
     "find_country": "Găsește țara",
     "localization_region_and_language": "Deschide instrumentul de selectare a regiunii și limbii",
-    "open_search_modal": "Deschide fereastra modală de căutare",
-    "decrease_quantity": "Micșorează cantitatea",
-    "increase_quantity": "Mărește cantitatea"
+    "open_search_modal": "Deschide fereastra de căutare",
+    "decrease_quantity": "Scade cantitatea",
+    "increase_quantity": "Crește cantitatea",
+    "quantity": "Cantitate"
   },
   "actions": {
     "add_to_cart": "Adaugă în coș",

@@ -16,53 +16,6 @@
       "comment": "Komentář",
       "post_success": "Děkujeme, že jste nás kontaktovali. Ozveme se vám co možná nejdříve.",
       "error_heading": "Upravte prosím následující informace:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} za {{count}} položku",
-        "other": "{{price}} za tento počet položek: {{count}}",
-        "few": "{{price}} za tento počet položek: {{count}}",
-        "many": "{{price}} za tento počet položek: {{count}}"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}",
-        "few": "{{price}}/{{count}} {{unit}}",
-        "many": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} za {{unit}}",
-        "one": "{{price}} za {{count}}{{unit}}",
-        "other": "{{price}} za {{count}}{{unit}}",
-        "few": "{{price}} za {{count}}{{unit}}",
-        "many": "{{price}} za {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "položka"
-      },
-      "per_item_single_html": "{{price}} za každou položku",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -90,7 +43,7 @@
       "few": "Je použito více filtrů ({{ count }})",
       "many": "Je použito více filtrů ({{ count }})"
     },
-    "account": "Otevřít menu účtu",
+    "account": "Otevřít nabídku účtu",
     "cart": "Košík",
     "cart_count": "Celkem položek v košíku",
     "menu": "Nabídka",
@@ -105,9 +58,10 @@
     "pause_video": "Pozastavit video",
     "find_country": "Najít zemi",
     "localization_region_and_language": "Otevřít výběr regionu a jazyka",
-    "open_search_modal": "Otevřít modální vyhledávání",
+    "open_search_modal": "Otevřít vyhledávání",
     "decrease_quantity": "Snížit množství",
-    "increase_quantity": "Zvýšit množství"
+    "increase_quantity": "Zvýšit množství",
+    "quantity": "Množství"
   },
   "actions": {
     "add_to_cart": "Přidat do košíku",

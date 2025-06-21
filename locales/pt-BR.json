@@ -16,50 +16,6 @@
       "comment": "Comentário",
       "post_success": "Agradecemos seu contato. Retornaremos o mais rápido possível.",
       "error_heading": "Ajuste o seguinte:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} por {{count}} item",
-        "other": "{{price}} por {{count}} itens",
-        "many": "{{price}} por {{count}} itens"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}",
-        "many": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} por {{unit}}",
-        "one": "{{price}} por {{count}}{{unit}}",
-        "other": "{{price}} por {{count}}{{unit}}",
-        "many": "{{price}} por {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "item"
-      },
-      "per_item_single_html": "{{price}} cada",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -86,7 +42,7 @@
       "other": "{{ count }} filtros aplicados",
       "many": "{{ count }} filtros aplicados"
     },
-    "account": "Abrir menu suspenso da conta",
+    "account": "Abrir menu da conta",
     "cart": "Carrinho",
     "cart_count": "Total de itens no carrinho",
     "menu": "Menu",
@@ -96,14 +52,15 @@
     "loading_product_recommendations": "Carregando recomendações de produtos",
     "discount": "Aplicar um código de desconto",
     "discount_applied": "Código de desconto aplicado: {{ code }}",
-    "open_cart_drawer": "Abrir carrinho de compras deslizante",
+    "open_cart_drawer": "Abrir carrinho",
     "inventory_status": "Status do estoque",
     "pause_video": "Pausar o vídeo",
     "find_country": "Localizar o país",
     "localization_region_and_language": "Abrir seletor de região e idioma",
-    "open_search_modal": "Abrir janela modal de pesquisa",
-    "decrease_quantity": "Diminuir quantidade",
-    "increase_quantity": "Aumentar quantidade"
+    "open_search_modal": "Abrir pesquisa",
+    "decrease_quantity": "Diminuir a quantidade",
+    "increase_quantity": "Aumentar a quantidade",
+    "quantity": "Quantidade"
   },
   "actions": {
     "add_to_cart": "Adicionar ao carrinho",

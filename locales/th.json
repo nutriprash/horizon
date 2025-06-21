@@ -16,47 +16,6 @@
       "comment": "ความคิดเห็น",
       "post_success": "ขอบคุณที่ติดต่อเรา เราจะติดต่อกลับหาคุณโดยเร็วที่สุด",
       "error_heading": "โปรดแก้ไขข้อมูลดังต่อไปนี้"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} ต่อ {{count}} รายการ",
-        "other": "{{price}} ต่อ {{count}} รายการ"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} ต่อ {{unit}}",
-        "one": "{{price}} ต่อ {{count}}{{unit}}",
-        "other": "{{price}} ต่อ {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "มก.",
-        "g": "ก.",
-        "kg": "กก.",
-        "ml": "มล.",
-        "cl": "ซล.",
-        "l": "ล.",
-        "m3": "ลบ.ม.",
-        "mm": "มม.",
-        "cm": "ซม.",
-        "m": "ม.",
-        "m2": "ตร.ม.",
-        "oz": "ออนซ์",
-        "lb": "ปอนด์",
-        "floz": "ออนซ์ของเหลว",
-        "pt": "ไพนต์",
-        "qt": "ควอร์ต",
-        "gal": "แกลลอน",
-        "in": "นิ้ว",
-        "ft": "ฟุต",
-        "yd": "หลา",
-        "ft2": "ตร.ฟุต",
-        "item": "รายการ"
-      },
-      "per_item_single_html": "{{price}} ต่อรายการ",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "ใช้ตัวกรอง {{ count }} ตัวกรองแล้ว",
       "other": "ใช้ตัวกรอง {{ count }} ตัวกรองแล้ว"
     },
-    "account": "เปิดดรอปดาวน์บัญชี",
+    "account": "เปิดเมนูบัญชี",
     "cart": "ตะกร้าสินค้า",
     "cart_count": "สินค้าทั้งหมดในตะกร้าสินค้า",
     "menu": "เมนู",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "กำลังโหลดการแนะนำสินค้า",
     "discount": "ใช้รหัสส่วนลด",
     "discount_applied": "ใช้รหัสส่วนลดแล้ว: {{ code }}",
-    "open_cart_drawer": "เปิดตะกร้าสินค้าแบบเลื่อนด้านข้าง",
+    "open_cart_drawer": "เปิดตะกร้าสินค้า",
     "inventory_status": "สถานะสินค้าคงคลัง",
     "pause_video": "หยุดวิดีโอชั่วคราว",
     "find_country": "ค้นหาประเทศ",
     "localization_region_and_language": "เปิดตัวเลือกภูมิภาคและภาษา",
-    "open_search_modal": "เปิดโมดอลค้นหา",
+    "open_search_modal": "เปิดการค้นหา",
     "decrease_quantity": "ลดจำนวน",
-    "increase_quantity": "เพิ่มจำนวน"
+    "increase_quantity": "เพิ่มจำนวน",
+    "quantity": "จำนวน"
   },
   "actions": {
     "add_to_cart": "เพิ่มลงในตะกร้าสินค้า",

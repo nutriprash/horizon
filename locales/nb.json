@@ -16,47 +16,6 @@
       "comment": "Kommentar",
       "post_success": "Takk for at du kontaktet oss. Vi svarer så snart som mulig.",
       "error_heading": "Juster følgende:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} for {{count}} vare",
-        "other": "{{price}} for {{count}} varer"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} per {{unit}}",
-        "one": "{{price}} per {{count}}{{unit}}",
-        "other": "{{price}} per {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "tommer",
-        "ft": "fot",
-        "yd": "yard",
-        "ft2": "fot²",
-        "item": "vare"
-      },
-      "per_item_single_html": "{{price}} hver",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "{{ count }} filter brukt",
       "other": "{{ count }} filtre brukt"
     },
-    "account": "Åpne kontoens rullegardinmeny",
+    "account": "Åpne kontomenyen",
     "cart": "Handlekurv",
     "cart_count": "Totalt antall varer i handlekurven",
     "menu": "Meny",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "Laster inn produktanbefalinger",
     "discount": "Bruk en rabattkode",
     "discount_applied": "Brukt rabattkode: {{ code }}",
-    "open_cart_drawer": "Åpne handlekurvskuffen",
+    "open_cart_drawer": "Åpne handlekurven",
     "pause_video": "Sett videoen på pause",
     "inventory_status": "Lagerstatus",
     "find_country": "Finn land",
     "localization_region_and_language": "Åpne område- og språkvelgeren",
-    "open_search_modal": "Åpne søkemodalen",
-    "decrease_quantity": "Reduser antall",
-    "increase_quantity": "Øk antall"
+    "open_search_modal": "Åpne søk",
+    "decrease_quantity": "Reduser antallet",
+    "increase_quantity": "Øk antallet",
+    "quantity": "Antall"
   },
   "actions": {
     "add_to_cart": "Legg i handlekurv",

@@ -16,47 +16,6 @@
       "comment": "댓글",
       "post_success": "문의해 주셔서 감사합니다. 최대한 빨리 답변드리겠습니다.",
       "error_heading": "다음을 조정하세요."
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{count}}개 품목당 {{price}}",
-        "other": "{{count}}개 품목당 {{price}}"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{unit}}당 {{price}}",
-        "one": "{{count}}{{unit}}당 {{price}}",
-        "other": "{{count}}{{unit}}당 {{price}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "품목"
-      },
-      "per_item_single_html": "개당 {{price}}",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "{{ count }}개 필터 적용됨",
       "other": "{{ count }}개 필터 적용됨"
     },
-    "account": "계정 드롭다운 열기",
+    "account": "계정 메뉴 열기",
     "cart": "카트",
     "cart_count": "카트에 있는 총 품목 수",
     "menu": "메뉴",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "제품 추천 로드 중",
     "discount": "할인 코드 적용",
     "discount_applied": "적용된 할인 코드: {{ code }}",
-    "open_cart_drawer": "카트 서랍 열기",
+    "open_cart_drawer": "카트 열기",
     "pause_video": "동영상 일시 중지",
     "inventory_status": "재고 상태",
     "find_country": "국가 찾기",
     "localization_region_and_language": "지역 및 언어 선택기 열기",
-    "open_search_modal": "검색 모달 열기",
-    "decrease_quantity": "수량 줄이기",
-    "increase_quantity": "수량 늘리기"
+    "open_search_modal": "검색 열기",
+    "decrease_quantity": "수량 감소",
+    "increase_quantity": "수량 증가",
+    "quantity": "수량"
   },
   "actions": {
     "add_to_cart": "카트에 추가",

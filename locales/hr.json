@@ -16,50 +16,6 @@
       "comment": "Komentar",
       "post_success": "Hvala vam na javljanju. Odgovorit ćemo vam u najkraćem mogućem roku.",
       "error_heading": "Prilagodite sljedeće:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} za sljedeći broj artikala: {{count}}",
-        "other": "{{price}} za sljedeći broj artikala: {{count}}",
-        "few": "{{price}} za sljedeći broj artikala: {{count}}"
-      },
-      "per_unit_html": {
-        "one": "{{price}} / {{count}}{{unit}}",
-        "other": "{{price}} / {{count}}{{unit}}",
-        "few": "{{price}} / {{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} za {{unit}}",
-        "one": "{{price}} za {{count}}{{unit}}",
-        "other": "{{price}} za {{count}}{{unit}}",
-        "few": "{{price}} za {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "artikl"
-      },
-      "per_item_single_html": "{{price}} svaki",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -86,7 +42,7 @@
       "other": "Primijenjen je sljedeći broj filtara: {{ count }}",
       "few": "Primijenjen je sljedeći broj filtara: {{ count }}"
     },
-    "account": "Otvori padajući izbornik računa",
+    "account": "Otvori izbornik računa",
     "cart": "Košarica",
     "cart_count": "Ukupan broj stavki u košarici",
     "menu": "Izbornik",
@@ -96,14 +52,15 @@
     "loading_product_recommendations": "Učitavanje preporuka proizvoda",
     "discount": "Primijeni kod za popust",
     "discount_applied": "Primijenjeni kod za popust: {{ code }}",
-    "open_cart_drawer": "Otvorite ladicu košarica",
+    "open_cart_drawer": "Otvori košaricu",
     "inventory_status": "Status zaliha",
     "pause_video": "Pauziraj videozapis",
     "localization_region_and_language": "Otvori izbornik regije i jezika",
-    "open_search_modal": "Otvori dijaloški okvir pretraživanja",
+    "open_search_modal": "Otvori pretraživanje",
     "find_country": "Pronađi državu",
     "decrease_quantity": "Smanji količinu",
-    "increase_quantity": "Povećaj količinu"
+    "increase_quantity": "Povećaj količinu",
+    "quantity": "Količina"
   },
   "actions": {
     "add_to_cart": "Dodaj u košaricu",

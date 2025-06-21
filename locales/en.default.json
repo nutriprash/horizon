@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin language editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "accessibility": {
     "account": "Open account menu",
@@ -30,6 +30,7 @@
     "new_window": "Opens in a new window.",
     "open_cart_drawer": "Open cart",
     "open_search_modal": "Open search",
+    "quantity": "Quantity",
     "pause_video": "Pause video",
     "play_model": "Play 3D model",
     "play_video": "Play video",
@@ -107,47 +108,6 @@
     "filter": "Filter",
     "load_video": "Load video: {{ description }}",
     "sold_out": "Sold out",
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} per {{count}} item",
-        "other": "{{price}} per {{count}} items"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} per {{unit}}",
-        "one": "{{price}} per {{count}}{{unit}}",
-        "other": "{{price}} per {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "item"
-      },
-      "per_item_single_html": "{{price}} each",
-      "per_unit_single_html": "{{price}}/{{unit}}"
-    },
     "payment_methods": "Payment methods"
   },
   "blogs": {

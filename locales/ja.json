@@ -16,47 +16,6 @@
       "comment": "コメント",
       "post_success": "お問い合わせいただきありがとうございます。早急に返信いたします。",
       "error_heading": "以下を確認してください。"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{count}}点のアイテムにつき{{price}}",
-        "other": "{{count}}点のアイテムにつき{{price}}"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{unit}}あたり{{price}}",
-        "one": "{{price}}あたり{{count}}{{unit}}",
-        "other": "{{price}}あたり{{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "ミリグラム",
-        "g": "グラム",
-        "kg": "キログラム",
-        "ml": "ミリリットル",
-        "cl": "センチリットル",
-        "l": "リットル",
-        "m3": "立方メートル",
-        "mm": "ミリメートル",
-        "cm": "センチメートル",
-        "m": "メートル",
-        "m2": "平方メートル",
-        "oz": "オンス",
-        "lb": "ポンド",
-        "floz": "液量オンス",
-        "pt": "パイント",
-        "qt": "クォート",
-        "gal": "ガロン",
-        "in": "インチ",
-        "ft": "フィート",
-        "yd": "ヤード",
-        "ft2": "平方フィート",
-        "item": "アイテム"
-      },
-      "per_item_single_html": "各アイテムにつき{{price}}",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "{{ count }}フィルターを適用しました",
       "other": "{{ count }}フィルターを適用しました"
     },
-    "account": "アカウントのドロップダウンを開く",
+    "account": "アカウントメニューを開く",
     "cart": "カート",
     "cart_count": "カート内の合計アイテム数",
     "menu": "メニュー",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "商品のおすすめを読み込んでいます",
     "discount": "クーポンコードを適用する",
     "discount_applied": "適用クーポンコード:{{ code }}",
-    "open_cart_drawer": "カートドロワーを開く",
+    "open_cart_drawer": "カートを開く",
     "pause_video": "動画を一時停止",
     "inventory_status": "在庫ステータス",
     "find_country": "国を探す",
     "localization_region_and_language": "地域と言語のセレクターを開く",
-    "open_search_modal": "検索モーダルを開く",
+    "open_search_modal": "検索を開く",
     "decrease_quantity": "数量を減らす",
-    "increase_quantity": "数量を増やす"
+    "increase_quantity": "数量を増やす",
+    "quantity": "数量"
   },
   "actions": {
     "add_to_cart": "カートに追加",

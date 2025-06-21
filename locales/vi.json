@@ -16,47 +16,6 @@
       "comment": "Nhận xét",
       "post_success": "Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
       "error_heading": "Vui lòng điều chỉnh các mục sau:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} mỗi {{count}} mặt hàng",
-        "other": "{{price}} mỗi {{count}} mặt hàng"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} mỗi {{unit}}",
-        "one": "{{price}} mỗi {{count}} {{unit}}",
-        "other": "{{price}} mỗi {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "L",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "mặt hàng"
-      },
-      "per_item_single_html": "{{price}} mỗi mặt hàng",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "Đã áp dụng {{ count }} bộ lọc",
       "other": "Đã áp dụng {{ count }} bộ lọc"
     },
-    "account": "Mở danh sách thả xuống tài khoản",
+    "account": "Mở menu tài khoản",
     "cart": "Giỏ hàng",
     "cart_count": "Tổng mặt hàng trong giỏ hàng",
     "menu": "Menu",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "Đang tải đề xuất sản phẩm",
     "discount": "Áp dụng một mã giảm giá",
     "discount_applied": "Đã áp dụng mã giảm giá: {{ code }}",
-    "open_cart_drawer": "Mở ngăn giỏ hàng",
+    "open_cart_drawer": "Mở giỏ hàng",
     "inventory_status": "Trạng thái hàng trong kho",
     "pause_video": "Tạm dừng video",
     "find_country": "Tìm quốc gia",
     "localization_region_and_language": "Mở bộ chọn khu vực và ngôn ngữ",
-    "open_search_modal": "Mở hộp tương tác tìm kiếm",
+    "open_search_modal": "Mở công cụ tìm kiếm",
     "decrease_quantity": "Giảm số lượng",
-    "increase_quantity": "Tăng số lượng"
+    "increase_quantity": "Tăng số lượng",
+    "quantity": "Số lượng"
   },
   "actions": {
     "add_to_cart": "Thêm vào giỏ hàng",

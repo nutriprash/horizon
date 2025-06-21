@@ -16,47 +16,6 @@
       "comment": "Kommentar",
       "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
       "error_heading": "Bitte passe Folgendes an:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} für {{count}} Artikel",
-        "other": "{{price}} für {{count}} Artikel"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} pro {{unit}}",
-        "one": "{{price}} pro {{count}} {{unit}}",
-        "other": "{{price}} pro {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "Artikel"
-      },
-      "per_item_single_html": "{{price}} pro Stück",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -97,9 +56,10 @@
     "pause_video": "Video pausieren",
     "find_country": "Land finden",
     "localization_region_and_language": "Region- und Sprachauswahl öffnen",
-    "open_search_modal": "Modal suchen öffnen",
+    "open_search_modal": "Suche öffnen",
     "decrease_quantity": "Menge verringern",
-    "increase_quantity": "Menge erhöhen"
+    "increase_quantity": "Menge erhöhen",
+    "quantity": "Menge"
   },
   "actions": {
     "add_to_cart": "In den Warenkorb legen",

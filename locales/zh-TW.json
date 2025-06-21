@@ -16,47 +16,6 @@
       "comment": "留言",
       "post_success": "感謝您聯絡我們。我們會盡快回覆您。",
       "error_heading": "請調整以下內容："
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "每 {{count}} 個品項 {{price}}",
-        "other": "每 {{count}} 個品項 {{price}}"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} (每 {{unit}})",
-        "one": "{{price}} (每 {{count}} {{unit}})",
-        "other": "{{price}} (每 {{count}} {{unit}})"
-      },
-      "unit": {
-        "mg": "毫克",
-        "g": "克",
-        "kg": "公斤",
-        "ml": "毫升",
-        "cl": "厘升",
-        "l": "公升",
-        "m3": "立方公尺",
-        "mm": "公釐",
-        "cm": "公分",
-        "m": "公尺",
-        "m2": "平方公尺",
-        "oz": "盎司",
-        "lb": "磅",
-        "floz": "液量盎司",
-        "pt": "品脫",
-        "qt": "夸脫",
-        "gal": "加侖",
-        "in": "英寸",
-        "ft": "英尺",
-        "yd": "碼",
-        "ft2": "平方英尺",
-        "item": "品項"
-      },
-      "per_item_single_html": "每個品項 {{price}}",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -78,7 +37,7 @@
     "search_results_count": "找到 {{ count }} 筆「{{ query }}」的搜尋結果",
     "search_results_no_results": "找不到「{{ query }}」的相關結果",
     "filters": "篩選條件",
-    "account": "開啟帳號下拉式選單",
+    "account": "開啟帳戶選單",
     "cart": "購物車",
     "cart_count": "購物車內品項總數",
     "filter_count": {
@@ -97,9 +56,10 @@
     "pause_video": "暫停影片",
     "find_country": "尋找國家/地區",
     "localization_region_and_language": "開啟地區和語言選擇器",
-    "open_search_modal": "開啟搜尋互動視窗",
+    "open_search_modal": "開啟購物車搜尋",
     "decrease_quantity": "減少數量",
-    "increase_quantity": "增加數量"
+    "increase_quantity": "增加數量",
+    "quantity": "數量"
   },
   "actions": {
     "add_to_cart": "加入購物車",

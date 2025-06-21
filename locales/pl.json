@@ -16,53 +16,6 @@
       "comment": "Komentarz",
       "post_success": "Dziękujemy za skontaktowanie się z nami. Odpowiemy tak szybko, jak to możliwe.",
       "error_heading": "Dostosuj następujące dane:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} za {{count}} szt.",
-        "other": "{{price}} za {{count}} szt.",
-        "few": "{{price}} za {{count}} szt.",
-        "many": "{{price}} za {{count}} szt."
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}",
-        "few": "{{price}}/{{count}} {{unit}}",
-        "many": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} za {{unit}}",
-        "one": "{{price}} za {{count}} {{unit}}",
-        "other": "{{price}} za {{count}} {{unit}}",
-        "few": "{{price}} za {{count}} {{unit}}",
-        "many": "{{price}} za {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "D",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "cal.",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "szt."
-      },
-      "per_item_single_html": "{{price}} za szt.",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -84,7 +37,7 @@
     "search_results_count": "Znaleziono wyniki wyszukiwania ({{ count }}) dla „{{ query }}”",
     "search_results_no_results": "Nie znaleziono wyników dla „{{ query }}”",
     "filters": "Filtry",
-    "account": "Otwórz listę rozwijaną konta",
+    "account": "Otwórz menu konta",
     "cart": "Koszyk",
     "cart_count": "Łączna liczba pozycji w koszyku",
     "filter_count": {
@@ -100,14 +53,15 @@
     "loading_product_recommendations": "Wczytywanie polecanych produktów",
     "discount": "Zastosuj kod rabatowy",
     "discount_applied": "Zastosowany kod rabatowy: {{ code }}",
-    "open_cart_drawer": "Otwórz szufladę koszyka",
+    "open_cart_drawer": "Otwórz koszyk",
     "pause_video": "Zatrzymaj film",
     "inventory_status": "Stan zapasów",
     "find_country": "Znajdź kraj",
     "localization_region_and_language": "Otwórz region i selektor języka",
-    "open_search_modal": "Otwórz okno modalne wyszukiwania",
+    "open_search_modal": "Otwórz wyszukiwanie",
     "decrease_quantity": "Zmniejsz ilość",
-    "increase_quantity": "Zwiększ ilość"
+    "increase_quantity": "Zwiększ ilość",
+    "quantity": "Ilość"
   },
   "actions": {
     "add_to_cart": "Dodaj do koszyka",

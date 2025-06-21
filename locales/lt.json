@@ -16,53 +16,6 @@
       "comment": "Komentaras",
       "post_success": "Dėkojame, kad kreipėtės. Atsakysime kaip galėdami greičiau.",
       "error_heading": "Pakoreguokite toliau pateiktą informaciją:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} už {{count}} prekę",
-        "other": "{{price}} už {{count}} prekę (-es/-ių)",
-        "few": "{{price}} už {{count}} prekę (-es/-ių)",
-        "many": "{{price}} už {{count}} prekę (-es/-ių)"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}",
-        "few": "{{price}}/{{count}} {{unit}}",
-        "many": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} už {{unit}}",
-        "one": "{{price}} už {{count}} {{unit}}",
-        "other": "{{price}} už {{count}} {{unit}}",
-        "few": "{{price}} už {{count}} {{unit}}",
-        "many": "{{price}} už {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "unc.",
-        "lb": "sv.",
-        "floz": "sk. unc.",
-        "pt": "pint.",
-        "qt": "kvart.",
-        "gal": "gal.",
-        "in": "col.",
-        "ft": "pėd.",
-        "yd": "jard.",
-        "ft2": "pėd.²",
-        "item": "prekė"
-      },
-      "per_item_single_html": "{{price}} už kiekvieną",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -84,7 +37,7 @@
     "search_results_count": "Rasti {{ count }} rezultatai (-ų) pagal užklausą „{{ query }}“",
     "search_results_no_results": "Nerasta jokių rezultatų pagal užklausą „{{ query }}“",
     "filters": "Filtrai",
-    "account": "Atidaryti išskleidžiamąjį paskyrų sąrašą",
+    "account": "Atidaryti paskyros meniu",
     "cart": "Krepšelis",
     "cart_count": "Iš viso prekių krepšelyje",
     "filter_count": {
@@ -100,14 +53,15 @@
     "loading_product_recommendations": "Įkeliamos gaminių rekomendacijos",
     "discount": "Taikyti nuolaidos kodą",
     "discount_applied": "Pritaikytas nuolaidos kodas: {{ code }}",
-    "open_cart_drawer": "Atidaryti krepšelio skyrių",
+    "open_cart_drawer": "Atidaryti krepšelį",
     "inventory_status": "Atsargų būsena",
     "pause_video": "Pristabdyti vaizdo įrašą",
     "find_country": "Rasti šalį",
     "localization_region_and_language": "Atidaryti regiono ir kalbos parinkiklį",
-    "open_search_modal": "Atidaryti modalinį paieškos langą",
+    "open_search_modal": "Atidaryti paiešką",
     "decrease_quantity": "Sumažinti kiekį",
-    "increase_quantity": "Padidinti kiekį"
+    "increase_quantity": "Padidinti kiekį",
+    "quantity": "Kiekis"
   },
   "actions": {
     "add_to_cart": "Įdėti į krepšelį",

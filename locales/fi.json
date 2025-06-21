@@ -16,47 +16,6 @@
       "comment": "Kommentti",
       "post_success": "Kiitos yhteydenotostasi. Vastaamme sinulle mahdollisimman pian.",
       "error_heading": "Muokkaa seuraavia:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} / {{count}} tuote",
-        "other": "{{price}} / {{count}} tuotetta"
-      },
-      "per_unit_html": {
-        "one": "{{price}} / {{count}} {{unit}}",
-        "other": "{{price}} / {{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} per {{unit}}",
-        "one": "{{price}} per {{count}} {{unit}}",
-        "other": "{{price}} per {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "tuote"
-      },
-      "per_item_single_html": "{{price}} / tuote",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "{{ count }} suodatin käytössä",
       "other": "{{ count }} suodatinta käytössä"
     },
-    "account": "Avaa tilimenu",
+    "account": "Avaa tilivalikko",
     "cart": "Ostoskori",
     "cart_count": "Tuotteita ostoskorissa yhteensä",
     "menu": "Valikko",
@@ -97,9 +56,10 @@
     "pause_video": "Keskeytä video",
     "find_country": "Etsi maa",
     "localization_region_and_language": "Avaa alueen ja kielen valitsin",
-    "open_search_modal": "Avaa modaalinen hakuikkuna",
-    "decrease_quantity": "Vähennä määrää",
-    "increase_quantity": "Lisää määrää"
+    "open_search_modal": "Avaa haku",
+    "decrease_quantity": "Pienennä määrää",
+    "increase_quantity": "Suurenna määrää",
+    "quantity": "Määrä"
   },
   "actions": {
     "add_to_cart": "Lisää ostoskoriin",

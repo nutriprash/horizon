@@ -16,47 +16,6 @@
       "comment": "Kommentar",
       "post_success": "Tak for din henvendelse. Vi kontakter dig hurtigst muligt.",
       "error_heading": "Juster følgende:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} pr. {{count}} vare",
-        "other": "{{price}} pr. {{count}} varer"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} pr. {{unit}}",
-        "one": "{{price}} pr. {{count}}{{unit}}",
-        "other": "{{price}} pr. {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "pund",
-        "floz": "fl oz",
-        "pt": "pt.",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "tommer",
-        "ft": "fod",
-        "yd": "yd",
-        "ft2": "fod²",
-        "item": "vare"
-      },
-      "per_item_single_html": "{{price}} pr. stk.",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -97,9 +56,10 @@
     "inventory_status": "Lagerstatus",
     "find_country": "Find land",
     "localization_region_and_language": "Åbn område- og sprogvælger",
-    "open_search_modal": "Åbn søgemodus",
-    "decrease_quantity": "Formindsk antal",
-    "increase_quantity": "Forøg antal"
+    "open_search_modal": "Åbn søgning",
+    "decrease_quantity": "Reducer antal",
+    "increase_quantity": "Øg antal",
+    "quantity": "Antal"
   },
   "actions": {
     "add_to_cart": "Læg i indkøbskurven",

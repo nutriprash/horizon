@@ -16,50 +16,6 @@
       "comment": "Commentaire",
       "post_success": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
       "error_heading": "Veuillez ajuster les éléments suivants :"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} pour {{count}} article",
-        "other": "{{price}} pour {{count}} articles",
-        "many": "{{price}} pour {{count}} articles"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}",
-        "many": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} pour {{unit}}",
-        "one": "{{price}} pour {{count}}{{unit}}",
-        "other": "{{price}} pour {{count}}{{unit}}",
-        "many": "{{price}} pour {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "oz liq.",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "po",
-        "ft": "pi",
-        "yd": "yd",
-        "ft2": "pi²",
-        "item": "article"
-      },
-      "per_item_single_html": "{{price}} pièce",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -101,9 +57,10 @@
     "pause_video": "Mettre la vidéo en pause",
     "find_country": "Trouver un pays",
     "localization_region_and_language": "Ouvrir le sélecteur de région et de langue",
-    "open_search_modal": "Ouvrir la fenêtre modale de recherche",
+    "open_search_modal": "Ouvrir la recherche",
     "decrease_quantity": "Diminuer la quantité",
-    "increase_quantity": "Augmenter la quantité"
+    "increase_quantity": "Augmenter la quantité",
+    "quantity": "Quantité"
   },
   "actions": {
     "add_to_cart": "Ajouter au panier",

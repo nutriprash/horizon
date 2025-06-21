@@ -16,50 +16,6 @@
       "comment": "Comentario",
       "post_success": "Gracias por contactarnos. Te responderemos lo antes posible.",
       "error_heading": "Realiza los ajustes siguientes:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} por {{count}} artículo",
-        "other": "{{price}} por {{count}} artículos",
-        "many": "{{price}} por {{count}} artículos"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}",
-        "many": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} por {{unit}}",
-        "one": "{{price}} por {{count}}{{unit}}",
-        "other": "{{price}} por {{count}}{{unit}}",
-        "many": "{{price}} por {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "pies",
-        "yd": "yd",
-        "ft2": "pies²",
-        "item": "artículo"
-      },
-      "per_item_single_html": "{{price}} cada artículo",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -101,9 +57,10 @@
     "inventory_status": "Estado del inventario",
     "find_country": "Buscar país",
     "localization_region_and_language": "Abrir selector de región e idioma",
-    "open_search_modal": "Abrir modal de búsqueda",
+    "open_search_modal": "Abrir búsqueda",
     "decrease_quantity": "Disminuir cantidad",
-    "increase_quantity": "Aumentar cantidad"
+    "increase_quantity": "Aumentar cantidad",
+    "quantity": "Cantidad"
   },
   "actions": {
     "add_to_cart": "Agregar al carrito",

@@ -16,47 +16,6 @@
       "comment": "Kommentar",
       "post_success": "Tack för att du kontaktar oss. Vi återkommer till dig så snart som möjligt.",
       "error_heading": "Justera följande:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} per {{count}} artikel",
-        "other": "{{price}} per {{count}} artiklar"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} per {{unit}}",
-        "one": "{{price}} per {{count}} {{unit}}",
-        "other": "{{price}} per {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pint",
-        "qt": "quart",
-        "gal": "gal",
-        "in": "tum",
-        "ft": "fot",
-        "yd": "yard",
-        "ft2": "fot²",
-        "item": "artikel"
-      },
-      "per_item_single_html": "{{price}} styck",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "Läser in produktrekommendationer",
     "discount": "Använd rabattkod",
     "discount_applied": "Tillämpad rabattkod: {{ code }}",
-    "open_cart_drawer": "Öppna varukorgspanel",
+    "open_cart_drawer": "Öppna varukorg",
     "pause_video": "Pausa video",
     "inventory_status": "Lagerstatus",
     "find_country": "Hitta land",
     "localization_region_and_language": "Öppna region- och språkväljare",
-    "open_search_modal": "Öppna sökfönster",
-    "decrease_quantity": "Minska antal",
-    "increase_quantity": "Öka antal"
+    "open_search_modal": "Öppna sök",
+    "decrease_quantity": "Minska kvantitet",
+    "increase_quantity": "Öka kvantitet",
+    "quantity": "Kvantitet"
   },
   "actions": {
     "add_to_cart": "Lägg till i varukorgen",

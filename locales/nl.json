@@ -16,47 +16,6 @@
       "comment": "Reactie",
       "post_success": "Bedankt dat je contact met ons hebt opgenomen. Je hoort zo snel mogelijk van ons.",
       "error_heading": "Pas het volgende aan:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} per {{count}} artikel",
-        "other": "{{price}} per {{count}} artikelen"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}}{{unit}}",
-        "other": "{{price}}/{{count}}{{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} per {{unit}}",
-        "one": "{{price}} per {{count}}{{unit}}",
-        "other": "{{price}} per {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "mg",
-        "g": "g",
-        "kg": "kg",
-        "ml": "ml",
-        "cl": "cl",
-        "l": "l",
-        "m3": "m³",
-        "mm": "mm",
-        "cm": "cm",
-        "m": "m",
-        "m2": "m²",
-        "oz": "oz",
-        "lb": "lb",
-        "floz": "fl oz",
-        "pt": "pt",
-        "qt": "qt",
-        "gal": "gal",
-        "in": "in",
-        "ft": "ft",
-        "yd": "yd",
-        "ft2": "ft²",
-        "item": "artikel"
-      },
-      "per_item_single_html": "{{price}} per stuk",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "{{ count }} filter toegepast",
       "other": "{{ count }} filters toegepast"
     },
-    "account": "Accountkeuzelijst openen",
+    "account": "Accountmenu openen",
     "cart": "Winkelwagen",
     "cart_count": "Totaal aantal artikelen in winkelwagen",
     "menu": "Menu",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "Productaanbevelingen laden",
     "discount": "Kortingscode toepassen",
     "discount_applied": "Toegepaste kortingscode: {{ code }}",
-    "open_cart_drawer": "Winkelwagenoptie openen",
+    "open_cart_drawer": "Winkelwagen openen",
     "inventory_status": "Voorraadstatus",
     "pause_video": "Video pauzeren",
     "find_country": "Land zoeken",
     "localization_region_and_language": "Regio- en taalkiezer openen",
-    "open_search_modal": "Zoekvenster openen",
-    "decrease_quantity": "Hoeveelheid verminderen",
-    "increase_quantity": "Hoeveelheid verhogen"
+    "open_search_modal": "Zoeken openen",
+    "decrease_quantity": "Aantal verlagen",
+    "increase_quantity": "Aantal verhogen",
+    "quantity": "Aantal"
   },
   "actions": {
     "add_to_cart": "Aan winkelwagen toevoegen",

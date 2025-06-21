@@ -16,47 +16,6 @@
       "comment": "Коментар",
       "post_success": "Благодарим, че се свързахте с нас. Ще се свържем с вас възможно най-скоро.",
       "error_heading": "Коригирайте следното:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} за {{count}} артикула",
-        "other": "{{price}} за {{count}} артикула"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} за {{unit}}",
-        "one": "{{price}} за {{count}} {{unit}}",
-        "other": "{{price}} за {{count}} {{unit}}"
-      },
-      "unit": {
-        "mg": "мг",
-        "g": "гр",
-        "kg": "кг",
-        "ml": "мл",
-        "cl": "сл",
-        "l": "л",
-        "m3": "м³",
-        "mm": "мм",
-        "cm": "см",
-        "m": "м",
-        "m2": "м²",
-        "oz": "унция",
-        "lb": "фунт",
-        "floz": "течна унция",
-        "pt": "пинта",
-        "qt": "кварта",
-        "gal": "галон",
-        "in": "инч",
-        "ft": "фут",
-        "yd": "ярд",
-        "ft2": "фут²",
-        "item": "артикул"
-      },
-      "per_item_single_html": "{{price}} за всеки артикул",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -82,7 +41,7 @@
       "one": "Приложен е {{ count }} филтър",
       "other": "Приложени са {{ count }} филтъра"
     },
-    "account": "Отвори меню на акаунта",
+    "account": "Отваряне на менюто на профила",
     "cart": "Количка",
     "cart_count": "Общо артикули в количката",
     "menu": "Меню",
@@ -92,14 +51,15 @@
     "loading_product_recommendations": "Зареждане на препоръчани продукти.",
     "discount": "Прилагане на код за отстъпка",
     "discount_applied": "Приложен код за отстъпка: {{ code }}",
-    "open_cart_drawer": "Отвори количката",
+    "open_cart_drawer": "Отваряне на количката",
     "inventory_status": "Статус на стоковите запаси",
     "pause_video": "Пауза на видеоклипа",
     "find_country": "Търсене на държава",
     "localization_region_and_language": "Отваряне на диалогов прозорец за избор на регион и език",
-    "open_search_modal": "Отваряне на диалогов прозорец за търсене",
+    "open_search_modal": "Отваряне на търсенето",
     "decrease_quantity": "Намаляване на количеството",
-    "increase_quantity": "Увеличаване на количеството"
+    "increase_quantity": "Увеличаване на количеството",
+    "quantity": "Количество"
   },
   "actions": {
     "add_to_cart": "Добавяне към количката",

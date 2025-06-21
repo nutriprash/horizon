@@ -16,53 +16,6 @@
       "comment": "Комментарий",
       "post_success": "Спасибо за обращение. Мы свяжемся с вами как можно скорее.",
       "error_heading": "Измените следующие элементы:"
-    },
-    "unit_price": {
-      "per_item_html": {
-        "one": "{{price}} за {{count}} ед. товара",
-        "other": "{{price}} за {{count}} ед. товара",
-        "few": "{{price}} за {{count}} ед. товара",
-        "many": "{{price}} за {{count}} ед. товара"
-      },
-      "per_unit_html": {
-        "one": "{{price}}/{{count}} {{unit}}",
-        "other": "{{price}}/{{count}} {{unit}}",
-        "few": "{{price}}/{{count}} {{unit}}",
-        "many": "{{price}}/{{count}} {{unit}}"
-      },
-      "per_unit_accessibility": {
-        "single": "{{price}} за {{unit}}",
-        "one": "{{price}} за {{count}}{{unit}}",
-        "other": "{{price}} за {{count}}{{unit}}",
-        "few": "{{price}} за {{count}}{{unit}}",
-        "many": "{{price}} за {{count}}{{unit}}"
-      },
-      "unit": {
-        "mg": "мг",
-        "g": "г",
-        "kg": "кг",
-        "ml": "мл",
-        "cl": "сл",
-        "l": "л",
-        "m3": "м³",
-        "mm": "мм",
-        "cm": "см",
-        "m": "м",
-        "m2": "м²",
-        "oz": "унц.",
-        "lb": "фунт.",
-        "floz": "жидк. унц.",
-        "pt": "пинт.",
-        "qt": "кварт.",
-        "gal": "гал.",
-        "in": "дюйм.",
-        "ft": "фут.",
-        "yd": "ярд.",
-        "ft2": "кв. фут.",
-        "item": "ед. товара"
-      },
-      "per_item_single_html": "{{price}} за шт.",
-      "per_unit_single_html": "{{price}}/{{unit}}"
     }
   },
   "accessibility": {
@@ -84,7 +37,7 @@
     "search_results_count": "Найдено {{ count }} результата(-ов) по запросу «{{ query }}»",
     "search_results_no_results": "По запросу «{{ query }}» ничего не найдено",
     "filters": "Фильтры",
-    "account": "Открыть раскрывающийся список счетов",
+    "account": "Скрыть меню учетной записи",
     "cart": "Корзина",
     "cart_count": "Всего товаров в корзине",
     "filter_count": {
@@ -100,14 +53,15 @@
     "loading_product_recommendations": "Загрузка рекомендаций товаров",
     "discount": "Применить промокод",
     "discount_applied": "Примененный промокод : {{ code }}",
-    "open_cart_drawer": "Открытый ящик тележки",
+    "open_cart_drawer": "Открыть корзину",
     "inventory_status": "Статус ассортимента",
     "pause_video": "Приостановить видео",
     "find_country": "Найти страну",
     "localization_region_and_language": "Открыть выбор региона и языка",
-    "open_search_modal": "Открыть модальное окно поиска",
-    "decrease_quantity": "Уменьшить количество",
-    "increase_quantity": "Увеличить количество"
+    "open_search_modal": "Открыть поиск",
+    "decrease_quantity": "Убрать позиции",
+    "increase_quantity": "Добавить позиции",
+    "quantity": "Количество"
   },
   "actions": {
     "add_to_cart": "Добавить в корзину",
