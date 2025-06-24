@@ -65,11 +65,15 @@
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
-              <label class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}">
+              {%- capture input_id -%}
+                  temp-{{ product_resource.id }}-{{ product_option.position }}-{{ forloop.index0 -}}
+                {%- endcapture -%}
+              <label class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}" for="{{ input_id }}">
                 <input
                   type="radio"
                   name="{{ product_option.name | escape }}-{{ block.id }}-{{ product_resource.id }}"
                   value="{{ product_option_value | escape }}"
+                  id="{{ input_id }}"
                   aria-label="{{ product_option_value.name }}"
                   {% if product_option_value.available == false %}
                     aria-disabled="true"
