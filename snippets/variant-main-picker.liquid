@@ -184,6 +184,9 @@
       <script type="application/json">
         {{ product_resource.selected_or_first_available_variant | json }}
       </script>
+      <script type="application/json" id="new_pro_json">
+        {{ product_resource.variants | json }}
+      </script>
     </form>
   </variant-picker>
 {% endunless %}
