@@ -114,6 +114,7 @@
           "ds_view_pogition": "cart",
           "method_empty_than_button_enable": "1",
           "shipping_icon": "shopify://shop_images/Cake_S.png",
+          "delivery_icon": "shopify://shop_images/cake_A.png",
           "method_block_active": "#cecece",
           "block_border": "#dadada",
           "icon_color": "#333333",
