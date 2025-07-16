@@ -104,6 +104,28 @@
         "type": "shopify://apps/interakt-whatsapp-marketing/blocks/app_embed/8ae4eea6-7869-4909-8446-2f9389fe7a63",
         "disabled": false,
         "settings": {}
+      },
+      "13726877604780529939": {
+        "type": "shopify://apps/ds-delivery-date-time/blocks/ds-date-picker/12b16554-93e6-4c9a-8f3a-563dadafeacb",
+        "disabled": false,
+        "settings": {
+          "custom_css": "",
+          "ds_view_pogition": "cart",
+          "method_empty_than_button_enable": "1",
+          "method_block_active": "#cecece",
+          "block_border": "#dadada",
+          "icon_color": "#333333",
+          "icon_color_hover": "#007bff",
+          "error_message": "#ff0000",
+          "date_time_text_color": "#000000",
+          "input_background_color": "#ffffff",
+          "input_border_color": "#cccccc",
+          "input_text_color": "#333333",
+          "input_placeholder_color": "#999999",
+          "select_time_hover": "#f0f0f0",
+          "pickup_location_active": "#eaeaea",
+          "pickup_location_focus": "#666666"
+        }
       }
     },
     "color_schemes": {
