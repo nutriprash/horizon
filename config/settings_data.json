@@ -104,7 +104,7 @@
         "disabled": false,
         "settings": {
           "custom_css": "",
-          "ds_view_pogition": "product",
+          "ds_view_pogition": "cart",
           "method_empty_than_button_enable": "1",
           "shipping_icon": "shopify://shop_images/Cake_S.png",
           "delivery_icon": "shopify://shop_images/cake_A.png",
