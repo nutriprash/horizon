@@ -184,6 +184,12 @@
               },
               "blocks": {}
             },
+            "ds_delivery_date_time_ds_custom_position_MbKqVK": {
+              "type": "shopify://apps/ds-delivery-date-time/blocks/ds-custom-position/12b16554-93e6-4c9a-8f3a-563dadafeacb",
+              "settings": {
+                "custom_css": ""
+              }
+            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
@@ -460,6 +466,7 @@
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "ds_delivery_date_time_ds_custom_position_MbKqVK",
             "buy_buttons_eYQEYi",
             "group_JbmQwr",
             "text_aEtTtq"
