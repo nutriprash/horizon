@@ -104,7 +104,7 @@
         "disabled": false,
         "settings": {
           "custom_css": "",
-          "ds_view_pogition": "cart",
+          "ds_view_pogition": "product",
           "method_empty_than_button_enable": "1",
           "shipping_icon": "shopify://shop_images/Cake_S.png",
           "delivery_icon": "shopify://shop_images/cake_A.png",
@@ -121,13 +121,6 @@
           "select_time_hover": "#f0f0f0",
           "pickup_location_active": "#eaeaea",
           "pickup_location_focus": "#666666"
-        }
-      },
-      "16548475241908962911": {
-        "type": "shopify://apps/oxi-social-login/blocks/social-login-embed/24ad60bc-8f09-42fa-807e-e5eda0fdae17",
-        "disabled": false,
-        "settings": {
-          "enabled_on_page": "account"
         }
       }
     },
