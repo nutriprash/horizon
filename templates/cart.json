@@ -71,10 +71,10 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>The date chosen is dispatch date. Delivery date will be determined as per shipping option and delivery location chosen ahead        </strong></p>",
-            "width": "fit-content",
+            "text": "<p><strong>The date chosen is dispatch date. Delivery date will be determined as per shipping option and delivery location chosen ahead                </strong></p>",
+            "width": "100%",
             "max_width": "normal",
-            "alignment": "right",
+            "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
