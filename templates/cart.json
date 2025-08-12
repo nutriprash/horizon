@@ -71,7 +71,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>The date chosen is dispatch date. Delivery date will be determined as per shipping option and delivery location chosen ahead .</strong><br/>Delivery date will be above dispatch date + as per below shipping option<br/>Express shipping metro cities 1 - 2 days, rest of India 3-4 working days<br/>Normal Shipping Metro cities 2 - 3 days, rest of India 4-6 working days<br/>In Mumbai Dispatch date will be delivery date if local delivery option chose<br/><br/><strong>               </strong></p>",
+            "text": "<p><strong>The date chosen is dispatch date. Delivery date will be determined as per shipping option and delivery location chosen ahead .</strong><br/>Delivery date will be above dispatch date + as per below shipping option<br/><strong>Express</strong> shipping <strong>metro cities</strong> 1 - 2 days, <strong>rest of India</strong> 3-4 working days<br/><strong>Normal</strong> Shipping <strong>metro cities</strong> 2 - 3 days, <strong>rest of India</strong> 4-6 working days<br/>In<strong> Mumbai </strong>dispatch date will be delivery date if <strong>local delivery</strong> option chosen.<br/><br/><strong>               </strong></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
