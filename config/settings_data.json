@@ -122,6 +122,16 @@
           "pickup_location_active": "#eaeaea",
           "pickup_location_focus": "#666666"
         }
+      },
+      "12648720965605750730": {
+        "type": "shopify://apps/folder-product-tabs/blocks/app-embed/e4a7401b-931e-422d-bab8-fc6ef5da44a4",
+        "disabled": true,
+        "settings": {}
+      },
+      "15343010483796684546": {
+        "type": "shopify://apps/cos-custom-order-status/blocks/order_status_block/cc174941-0008-466b-87a1-44394d1569a6",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
