@@ -132,6 +132,20 @@
         "type": "shopify://apps/cos-custom-order-status/blocks/order_status_block/cc174941-0008-466b-87a1-44394d1569a6",
         "disabled": false,
         "settings": {}
+      },
+      "17882464804019049970": {
+        "type": "shopify://apps/super-local-delivery/blocks/main/f654eccd-1f26-491b-8bc5-a89a02e7fdd6",
+        "disabled": false,
+        "settings": {
+          "enable_order_status_rating": true,
+          "bg_color": "#ffffff",
+          "text_color": "#000000",
+          "position": "bottom-right",
+          "bottom_offset": 20,
+          "cta_label": "Track Now",
+          "cta_color": "#000000",
+          "cta_label_color": "#ffffff"
+        }
       }
     },
     "color_schemes": {
