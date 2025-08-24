@@ -352,7 +352,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
-        "collection": "janmashtami",
+        "collection": "ganesh-chaturthi",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 8,
