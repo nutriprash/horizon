@@ -10,6 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/Vedic_Logo_png_1000x1000_11b3877e-1de1-4d66-9928-c9b000f23588.png",
+    "favicon": "shopify://shop_images/Favicon_-_32_x_32_Px-08-01.png",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
@@ -126,11 +127,6 @@
       "12648720965605750730": {
         "type": "shopify://apps/folder-product-tabs/blocks/app-embed/e4a7401b-931e-422d-bab8-fc6ef5da44a4",
         "disabled": true,
-        "settings": {}
-      },
-      "15343010483796684546": {
-        "type": "shopify://apps/cos-custom-order-status/blocks/order_status_block/cc174941-0008-466b-87a1-44394d1569a6",
-        "disabled": false,
         "settings": {}
       },
       "17882464804019049970": {
