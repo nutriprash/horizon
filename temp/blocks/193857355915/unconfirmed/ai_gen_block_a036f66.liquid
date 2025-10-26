@@ -1,6 +1,395 @@
+{% doc %}
+  @prompt
+    All the product meta feilds.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-metafields-container-{{ ai_gen_id }} {
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-metafields-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 {{ block.settings.spacing }}px;
+    font-weight: 600;
+  }
+
+  .ai-metafields-list-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.spacing }}px;
+  }
+
+  .ai-metafield-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: {{ block.settings.layout }};
+    gap: 8px;
+    padding: {{ block.settings.item_padding }}px;
+    background-color: {{ block.settings.item_background }};
+    border-radius: {{ block.settings.item_border_radius }}px;
+    border: {{ block.settings.item_border_width }}px solid {{ block.settings.item_border_color }};
+  }
+
+  .ai-metafield-key-{{ ai_gen_id }} {
+    font-size: {{ block.settings.key_size }}px;
+    color: {{ block.settings.key_color }};
+    font-weight: 600;
+    min-width: 150px;
+  }
+
+  .ai-metafield-value-{{ ai_gen_id }} {
+    font-size: {{ block.settings.value_size }}px;
+    color: {{ block.settings.value_color }};
+    word-break: break-word;
+  }
+
+  .ai-metafield-value-{{ ai_gen_id }} img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .ai-metafield-value-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: underline;
+  }
+
+  .ai-metafield-value-{{ ai_gen_id }} a:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-metafields-empty-{{ ai_gen_id }} {
+    padding: 40px 20px;
+    text-align: center;
+    color: {{ block.settings.empty_text_color }};
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-metafield-item-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-metafield-key-{{ ai_gen_id }} {
+      min-width: auto;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-metafields-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_title %}
+    <h3 class="ai-metafields-title-{{ ai_gen_id }}">{{ block.settings.title }}</h3>
+  {% endif %}
+
+  {% assign has_metafields = false %}
+  {% for metafield in product.metafields %}
+    {% if metafield.value != blank %}
+      {% assign has_metafields = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if has_metafields %}
+    <div class="ai-metafields-list-{{ ai_gen_id }}">
+      {% for metafield in product.metafields %}
+        {% if metafield.value != blank %}
+          <div class="ai-metafield-item-{{ ai_gen_id }}">
+            <div class="ai-metafield-key-{{ ai_gen_id }}">
+              {% if block.settings.show_namespace %}
+                {{ metafield.namespace }}.{{ metafield.key }}
+              {% else %}
+                {{ metafield.key | replace: '_', ' ' | capitalize }}
+              {% endif %}
+            </div>
+            <div class="ai-metafield-value-{{ ai_gen_id }}">
+              {% case metafield.type %}
+                {% when 'single_line_text_field', 'multi_line_text_field' %}
+                  {{ metafield.value }}
+                {% when 'number_integer', 'number_decimal' %}
+                  {{ metafield.value }}
+                {% when 'date' %}
+                  {{ metafield.value | date: '%B %d, %Y' }}
+                {% when 'date_time' %}
+                  {{ metafield.value | date: '%B %d, %Y at %I:%M %p' }}
+                {% when 'url' %}
+                  <a href="{{ metafield.value }}" target="_blank" rel="noopener">{{ metafield.value }}</a>
+                {% when 'boolean' %}
+                  {% if metafield.value %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                {% when 'color' %}
+                  <span style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span style="display: inline-block; width: 20px; height: 20px; background-color: {{ metafield.value }}; border: 1px solid #e6e6e6; border-radius: 4px;"></span>
+                    {{ metafield.value }}
+                  </span>
+                {% when 'file_reference' %}
+                  {% if metafield.value.media_type == 'image' %}
+                    <img src="{{ metafield.value | image_url: width: 200 }}" alt="{{ metafield.key }}" loading="lazy">
+                  {% else %}
+                    <a href="{{ metafield.value.url }}" target="_blank" rel="noopener">{{ metafield.value.alt | default: 'Download file' }}</a>
+                  {% endif %}
+                {% when 'list.single_line_text_field' %}
+                  {{ metafield.value | join: ', ' }}
+                {% when 'json' %}
+                  <pre style="background: #f5f5f5; padding: 8px; border-radius: 4px; overflow-x: auto; font-size: 12px;">{{ metafield.value | json }}</pre>
+                {% when 'product_reference' %}
+                  {% if metafield.value %}
+                    <a href="{{ metafield.value.url }}">{{ metafield.value.title }}</a>
+                  {% endif %}
+                {% when 'variant_reference' %}
+                  {% if metafield.value %}
+                    {{ metafield.value.title }}
+                  {% endif %}
+                {% when 'page_reference' %}
+                  {% if metafield.value %}
+                    <a href="{{ metafield.value.url }}">{{ metafield.value.title }}</a>
+                  {% endif %}
+                {% when 'collection_reference' %}
+                  {% if metafield.value %}
+                    <a href="{{ metafield.value.url }}">{{ metafield.value.title }}</a>
+                  {% endif %}
+                {% when 'list.product_reference' %}
+                  {% for product_ref in metafield.value %}
+                    <a href="{{ product_ref.url }}">{{ product_ref.title }}</a>{% unless forloop.last %}, {% endunless %}
+                  {% endfor %}
+                {% when 'rating' %}
+                  {{ metafield.value.value }} / {{ metafield.value.scale_max }}
+                {% when 'dimension' %}
+                  {{ metafield.value }}
+                {% when 'volume' %}
+                  {{ metafield.value }}
+                {% when 'weight' %}
+                  {{ metafield.value }}
+                {% else %}
+                  {{ metafield.value }}
+              {% endcase %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="ai-metafields-empty-{{ ai_gen_id }}">
+      No metafields available for this product
+    </div>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product metafields",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Product Details"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "row",
+          "label": "Horizontal"
+        },
+        {
+          "value": "column",
+          "label": "Vertical"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_namespace",
+      "label": "Show namespace",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Container padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Container border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Item style"
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Item padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "Item border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "item_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Item border width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "item_background",
+      "label": "Item background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Item border color",
+      "default": "#e6e6e6"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "key_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Key size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "key_color",
+      "label": "Key color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "value_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Value size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Value color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "empty_text_color",
+      "label": "Empty state text",
+      "default": "#999999"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product metafields"
+    }
+  ]
+}
 {% endschema %}
