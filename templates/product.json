@@ -303,7 +303,7 @@
                     "text_GYmbzh": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Best Before :  </p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}<p>If kept in a cool dry place.</p>",
+                        "text": "{{ closest.product.metafields.custom.choose_product | metafield_tag }}",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -337,6 +337,7 @@
             },
             "text_aEtTtq": {
               "type": "text",
+              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "width": "100%",
@@ -363,6 +364,7 @@
             "text_Un6WkL": {
               "type": "text",
               "name": "t:names.text",
+              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.metafields.custom.special_diet | metafield_tag }}",
                 "width": "fit-content",
@@ -389,6 +391,7 @@
             "text_UxtjCm": {
               "type": "text",
               "name": "t:names.text",
+              "disabled": true,
               "settings": {
                 "text": "<p>Ingredients: </p>{{ closest.product.metafields.custom.integredients | metafield_tag }}",
                 "width": "fit-content",
