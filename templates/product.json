@@ -303,7 +303,7 @@
                     "text_GYmbzh": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Best Before :  </p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}",
+                        "text": "<p>Best Before :  </p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}<p>If kept in a cool dry palce. You can refrigerate for longer shelf life.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
