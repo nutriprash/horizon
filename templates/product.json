@@ -656,8 +656,8 @@
           "type": "ai_gen_block_54d8794",
           "name": "Conditional ingredients 2.0",
           "settings": {
-            "heading": "Ingredients :",
-            "ingredients_content": "{{ closest.product.metafields.custom.integredients | metafield_tag }}",
+            "heading": "Assortments :",
+            "ingredients_content": "<p>Note : <em>The shelf life of the box is determined by the product with the shortest shelf life inside.</em></p>{{ closest.product.metafields.custom.integredients | metafield_tag }}",
             "background_color": "#ffffff",
             "heading_color": "#000000",
             "text_color": "#000000",
