@@ -416,7 +416,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "",
+                "text": "<p>Ingredients :</p>{{ closest.product.metafields.custom.integredients | metafield_tag }}",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
