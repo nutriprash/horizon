@@ -740,7 +740,8 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".pickup-availability {display: none !important;}"
+      ".pickup-availability-preview {display: none !important;}",
+      ".product-form__pickup-availabilities {display: none !important;}"
     ]
   }
 }
