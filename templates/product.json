@@ -415,6 +415,7 @@
             "product_recommendations_btgdTD": {
               "type": "product-recommendations",
               "name": "t:names.product_recommendations",
+              "disabled": true,
               "settings": {
                 "product": "{{ closest.product }}",
                 "recommendation_type": "related",
