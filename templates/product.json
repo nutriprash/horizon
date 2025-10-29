@@ -390,7 +390,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Shelf Life</p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}",
+                "text": "<p></p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
