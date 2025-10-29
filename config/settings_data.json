@@ -737,5 +737,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".pickup-availability {display: none !important;}"
+    ]
   }
 }
