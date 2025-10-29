@@ -553,26 +553,39 @@
                           },
                           "blocks": {}
                         },
-                        "price_HNCKz9": {
-                          "type": "price",
+                        "ai_gen_block_9b934f7_MB3zdf": {
+                          "type": "ai_gen_block_9b934f7",
+                          "name": "Text Link",
                           "settings": {
-                            "product": "{{ closest.product }}",
-                            "show_sale_price_first": true,
-                            "show_installments": false,
-                            "show_tax_info": false,
-                            "type_preset": "",
-                            "width": "100%",
+                            "text": "Shelf Life : {{ closest.product.metafields.custom.shelf_life | metafield_text }}",
+                            "link": "",
                             "alignment": "left",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "color": "var(--color-foreground)",
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
+                            "font_size": 14,
+                            "font_weight": "normal",
+                            "text_decoration": "none",
+                            "text_transform": "none",
+                            "text_color": "#000000",
+                            "hover_color": "#000f9f",
+                            "padding": 0,
+                            "margin": 0
+                          },
+                          "blocks": {}
+                        },
+                        "ai_gen_block_9b934f7_AddQGR": {
+                          "type": "ai_gen_block_9b934f7",
+                          "name": "Text Link",
+                          "settings": {
+                            "text": "Ingredients : {{ closest.product.metafields.custom.integredients | metafield_text }}",
+                            "link": "",
+                            "alignment": "left",
+                            "font_size": 13,
+                            "font_weight": "normal",
+                            "text_decoration": "none",
+                            "text_transform": "none",
+                            "text_color": "#000000",
+                            "hover_color": "#000f9f",
+                            "padding": 0,
+                            "margin": 0
                           },
                           "blocks": {}
                         },
@@ -593,7 +606,8 @@
                       },
                       "block_order": [
                         "product_title_V9HYjy",
-                        "price_HNCKz9",
+                        "ai_gen_block_9b934f7_MB3zdf",
+                        "ai_gen_block_9b934f7_AddQGR",
                         "swatches_mWJ63n"
                       ]
                     }
