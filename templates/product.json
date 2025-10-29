@@ -390,7 +390,33 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Shelf Life</p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}",
+                "text": "<p>Product Related Data</p><p></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Kp6Nft": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>Shelf Life</p><p>{{ closest.product.metafields.custom.shelf_life | metafield_tag }}</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -448,6 +474,7 @@
             "text_aEtTtq",
             "text_Un6WkL",
             "text_UxtjCm",
+            "text_Kp6Nft",
             "text_KEYx3Y"
           ]
         }
