@@ -1,6 +1,441 @@
+{% doc %}
+  @prompt
+    Create a conditional related products block that only displays when products are added to a related products metafield. For each related product, show the product image, title, and shelf life metafield value. The block should automatically hide if no related products are assigned. Include customizable settings for the section heading and styling for the product cards with shelf life information displayed prominently.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign related_products_metafield = product.metafields.custom.related_products
+  assign has_related_products = false
+  
+  if related_products_metafield != blank and related_products_metafield.value.size > 0
+    assign has_related_products = true
+  endif
+%}
+
+{% if has_related_products %}
+  {% style %}
+    .ai-related-products-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding }}px 0;
+    }
+
+    .ai-related-products-container-{{ ai_gen_id }} {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .ai-related-products-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size }}px;
+      color: {{ block.settings.heading_color }};
+      margin: 0 0 {{ block.settings.heading_spacing }}px;
+      text-align: {{ block.settings.heading_alignment }};
+    }
+
+    .ai-related-products-grid-{{ ai_gen_id }} {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax({{ block.settings.card_min_width }}px, 1fr));
+      gap: {{ block.settings.grid_gap }}px;
+    }
+
+    .ai-related-product-card-{{ ai_gen_id }} {
+      background-color: {{ block.settings.card_background }};
+      border-radius: {{ block.settings.card_border_radius }}px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ai-related-product-card-{{ ai_gen_id }}:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .ai-related-product-image-wrapper-{{ ai_gen_id }} {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      overflow: hidden;
+      background-color: #f5f5f5;
+    }
+
+    .ai-related-product-image-{{ ai_gen_id }} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ai-related-product-image-placeholder-{{ ai_gen_id }} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f5f5f5;
+    }
+
+    .ai-related-product-image-placeholder-{{ ai_gen_id }} svg {
+      width: 60%;
+      height: 60%;
+      opacity: 0.3;
+    }
+
+    .ai-related-product-info-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding }}px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ai-related-product-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size }}px;
+      color: {{ block.settings.title_color }};
+      margin: 0 0 8px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .ai-related-product-title-{{ ai_gen_id }} a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .ai-related-product-title-{{ ai_gen_id }} a:hover {
+      color: {{ block.settings.title_hover_color }};
+    }
+
+    .ai-related-product-shelf-life-{{ ai_gen_id }} {
+      background-color: {{ block.settings.shelf_life_background }};
+      color: {{ block.settings.shelf_life_text_color }};
+      padding: {{ block.settings.shelf_life_padding }}px {{ block.settings.shelf_life_padding | times: 1.5 }}px;
+      border-radius: {{ block.settings.shelf_life_border_radius }}px;
+      font-size: {{ block.settings.shelf_life_font_size }}px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: auto;
+    }
+
+    .ai-related-product-shelf-life-label-{{ ai_gen_id }} {
+      font-weight: 400;
+      opacity: 0.8;
+      margin-right: 4px;
+    }
+
+    .ai-related-product-no-shelf-life-{{ ai_gen_id }} {
+      font-size: 12px;
+      color: #999;
+      font-style: italic;
+      margin-top: auto;
+    }
+
+    @media screen and (max-width: 749px) {
+      .ai-related-products-grid-{{ ai_gen_id }} {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: {{ block.settings.grid_gap | times: 0.75 }}px;
+      }
+
+      .ai-related-products-heading-{{ ai_gen_id }} {
+        font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+      }
+
+      .ai-related-product-title-{{ ai_gen_id }} {
+        font-size: {{ block.settings.title_size | times: 0.9 }}px;
+      }
+
+      .ai-related-product-info-{{ ai_gen_id }} {
+        padding: {{ block.settings.card_padding | times: 0.75 }}px;
+      }
+    }
+  {% endstyle %}
+
+  <div class="ai-related-products-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+    <div class="ai-related-products-container-{{ ai_gen_id }}">
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-related-products-heading-{{ ai_gen_id }}">
+          {{ block.settings.heading }}
+        </h2>
+      {% endif %}
+
+      <div class="ai-related-products-grid-{{ ai_gen_id }}">
+        {% for related_product in related_products_metafield.value %}
+          <div class="ai-related-product-card-{{ ai_gen_id }}">
+            <a href="{{ related_product.url }}" class="ai-related-product-image-wrapper-{{ ai_gen_id }}">
+              {% if related_product.featured_image %}
+                <img
+                  src="{{ related_product.featured_image | image_url: width: 600 }}"
+                  alt="{{ related_product.featured_image.alt | escape }}"
+                  class="ai-related-product-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {% else %}
+                <div class="ai-related-product-image-placeholder-{{ ai_gen_id }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </a>
+
+            <div class="ai-related-product-info-{{ ai_gen_id }}">
+              <h3 class="ai-related-product-title-{{ ai_gen_id }}">
+                <a href="{{ related_product.url }}">{{ related_product.title }}</a>
+              </h3>
+
+              {% liquid
+                assign shelf_life = related_product.metafields.custom.shelf_life
+              %}
+
+              {% if shelf_life != blank %}
+                <div class="ai-related-product-shelf-life-{{ ai_gen_id }}">
+                  <span class="ai-related-product-shelf-life-label-{{ ai_gen_id }}">{{ block.settings.shelf_life_label }}:</span>
+                  <span>{{ shelf_life }}</span>
+                </div>
+              {% else %}
+                <div class="ai-related-product-no-shelf-life-{{ ai_gen_id }}">
+                  Shelf life not specified
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Related products",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "shelf_life_label",
+      "label": "Shelf life label",
+      "default": "Shelf life"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading spacing",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Grid gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_min_width",
+      "min": 150,
+      "max": 350,
+      "step": 10,
+      "unit": "px",
+      "label": "Card minimum width",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color",
+      "default": "#e6e6e6"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Product title size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "title_hover_color",
+      "label": "Product title hover color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Shelf life badge"
+    },
+    {
+      "type": "color",
+      "id": "shelf_life_background",
+      "label": "Background",
+      "default": "#eef1ea"
+    },
+    {
+      "type": "color",
+      "id": "shelf_life_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "shelf_life_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "shelf_life_padding",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "shelf_life_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related products"
+    }
+  ]
+}
 {% endschema %}
