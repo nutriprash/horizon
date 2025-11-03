@@ -412,14 +412,6 @@
               },
               "blocks": {}
             },
-            "custom_liquid_GhUpmj": {
-              "type": "custom-liquid",
-              "name": "t:names.custom_liquid",
-              "settings": {
-                "custom_liquid": "<div class=\"variant-box-size\" data-variant-metafield>\n  {% if product.selected_or_first_available_variant.metafields.custom.box_size %}\n    <strong>Box Size:</strong> <span class=\"box-size-value\">{{ product.selected_or_first_available_variant.metafields.custom.box_size }}</span>\n  {% endif %}\n</div>\n\n<script type=\"application/json\" data-variant-box-sizes>\n{\n  {% for variant in product.variants %}\n    \"{{ variant.id }}\": \"{{ variant.metafields.custom.box_size | escape }}\"{% unless forloop.last %},{% endunless %}\n  {% endfor %}\n}\n</script>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function() {\n    const variantBoxSizes = JSON.parse(document.querySelector('[data-variant-box-sizes]').textContent);\n    const boxSizeElement = document.querySelector('[data-variant-metafield] .box-size-value');\n    \n    document.addEventListener('variant:change', function(event) {\n      const variantId = event.detail.variant.id;\n      if (variantBoxSizes[variantId] && boxSizeElement) {\n        boxSizeElement.textContent = variantBoxSizes[variantId];\n      }\n    });\n  });\n</script>"
-              },
-              "blocks": {}
-            },
             "text_UTB3AV": {
               "type": "text",
               "name": "t:names.text",
@@ -667,7 +659,6 @@
             "text_aEtTtq",
             "text_Un6WkL",
             "text_Kp6Nft",
-            "custom_liquid_GhUpmj",
             "text_UTB3AV",
             "product_recommendations_btgdTD"
           ]
