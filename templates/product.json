@@ -412,29 +412,11 @@
               },
               "blocks": {}
             },
-            "text_XtKcWN": {
-              "type": "text",
-              "name": "t:names.text",
+            "custom_liquid_GhUpmj": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
               "settings": {
-                "text": "<p>We make things that work better and last longer. Our products solve real problems with clean design and honest materials.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "custom_liquid": "{% if product.selected_or_first_available_variant.metafields.custom.box_size %}\n  <div class=\"variant-box-size\">\n    <strong>Box Size:</strong> {{ product.selected_or_first_available_variant.metafields.custom.box_size }}\n  </div>\n{% endif %}"
               },
               "blocks": {}
             },
@@ -685,7 +667,7 @@
             "text_aEtTtq",
             "text_Un6WkL",
             "text_Kp6Nft",
-            "text_XtKcWN",
+            "custom_liquid_GhUpmj",
             "text_UTB3AV",
             "product_recommendations_btgdTD"
           ]
