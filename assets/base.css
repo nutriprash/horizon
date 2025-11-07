@@ -4153,8 +4153,95 @@ text-component {
   transform: none;
   box-shadow: none;
 }
-/* Hide internal collections from store */
-a[href*="/collections/18-not-for-web-packaging"],
-a[href*="/collections/not-for-website"] {
+
+
+
+/* Hide internal packaging and component products from storefront */
+
+/* Hide products from "18% not for web packaging" collection */
+a[href*="/products/sweet-box"],
+a[href*="/products/laddoo-boxes"],
+a[href*="/products/floral-3-jar-sweet-box"],
+a[href*="/products/box-29-23-5-8cm"],
+a[href*="/products/gift-bag-for-9-12-pc-box"],
+a[href*="/products/gift-bag-for-15-20-24-pc-box"],
+a[href*="/products/tray"],
+a[href*="/products/paper-carry-bag-for-2-bottles"],
+
+/* Hide products from "not for website" collection */
+a[href*="/products/date-dry-fruit"],
+a[href*="/products/rose-almond-pistachio"],
+a[href*="/products/pishori-pista-lodge"],
+a[href*="/products/date-coffee-cookie"],
+a[href*="/products/gulab-gulkand"],
+a[href*="/products/roasted-almond"],
+a[href*="/products/gond-badam-laddoo-small"],
+a[href*="/products/kesar-peda-with-pishori-pista"],
+a[href*="/products/badam-katli-sq"],
+a[href*="/products/pistachi-cranberry"],
+a[href*="/products/walnut-date-coco"],
+a[href*="/products/badam-flower"],
+a[href*="/products/date-mukhwas-1"],
+a[href*="/products/gond-badam-laddoo-jaggery-small"],
+a[href*="/products/mamra-badam-flowe"],
+a[href*="/products/besan-laddoo-1"],
+a[href*="/products/besan-chakkai"],
+a[href*="/products/multi-seed-berry-balls"],
+a[href*="/products/kaju-flower"],
+a[href*="/products/kesariya-badam-katli-sq-1"],
+a[href*="/products/walnut-nolen-gur-peda"],
+a[href*="/products/walnut-anjeer-pista"],
+a[href*="/products/pishori-pista-ball"],
+a[href*="/products/walnut-apricot-with-rasins"],
+a[href*="/products/crunch-badam-ball"],
+a[href*="/products/fancy-pista-disc"],
+a[href*="/products/nolen-gur-peda-with-caramel"],
+a[href*="/products/foxnut-oats-laddoo"],
+a[href*="/products/fancy-mamra-badam-disc"],
+a[href*="/products/fancy-kesar-disc"],
+a[href*="/products/fancy-badam-disc"],
+a[href*="/products/gond-badam-laddoo-jaggery-small-copy"],
+a[href*="/products/peda-with-strawberry-filling"],
+a[href*="/products/peda-with-kesariya-kumda-pak"],
+a[href*="/products/peda-with-rose-coconut"],
+a[href*="/products/kaju-katli-anjeer-sq"],
+a[href*="/products/fox-nut-oats-laddoo-kg"],
+a[href*="/products/gond-badam-laddoo-big"],
+a[href*="/products/gond-badam-jaggery-big"],
+a[href*="/products/walnut-anjeer-with-pishori-pista"],
+a[href*="/products/kaju-modak"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Hide product cards/items in grids */
+.product-card[data-product-handle*="sweet-box"],
+.product-card[data-product-handle*="laddoo-boxes"],
+.product-card[data-product-handle*="floral-3-jar-sweet-box"],
+.product-card[data-product-handle*="box-29-23-5-8cm"],
+.product-card[data-product-handle*="gift-bag"],
+.product-card[data-product-handle*="tray"],
+.product-card[data-product-handle*="paper-carry-bag"],
+.product-card[data-product-handle*="date-dry-fruit"],
+.product-card[data-product-handle*="rose-almond-pistachio"],
+.product-card[data-product-handle*="pishori-pista"],
+.product-card[data-product-handle*="date-coffee-cookie"],
+.product-card[data-product-handle*="gulab-gulkand"],
+.product-card[data-product-handle*="roasted-almond"],
+.product-card[data-product-handle*="gond-badam-laddoo"],
+.product-card[data-product-handle*="kesar-peda"],
+.product-card[data-product-handle*="badam-katli"],
+.product-card[data-product-handle*="pistachi-cranberry"],
+.product-card[data-product-handle*="walnut"],
+.product-card[data-product-handle*="badam-flower"],
+.product-card[data-product-handle*="date-mukhwas"],
+.product-card[data-product-handle*="mamra-badam"],
+.product-card[data-product-handle*="besan"],
+.product-card[data-product-handle*="multi-seed-berry"],
+.product-card[data-product-handle*="kaju-flower"],
+.product-card[data-product-handle*="fancy"],
+.product-card[data-product-handle*="foxnut"],
+.product-card[data-product-handle*="peda"],
+.product-card[data-product-handle*="kaju-modak"] {
   display: none !important;
 }
