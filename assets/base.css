@@ -4153,3 +4153,8 @@ text-component {
   transform: none;
   box-shadow: none;
 }
+/* Hide internal collections from store */
+a[href*="/collections/18-not-for-web-packaging"],
+a[href*="/collections/not-for-website"] {
+  display: none !important;
+}
