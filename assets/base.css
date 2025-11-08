@@ -4272,3 +4272,31 @@ li:has(a[href*="/products/kaju-modak"]) {
 .predictive-search__item:has(a[href*="/products/kaju-modak"]) {
   display: none !important;
 }
+
+
+/* Hide all products from "not for website" collection */
+/* This automatically hides any product added to this collection */
+
+/* Hide product cards in grids and lists */
+.card-wrapper:has(a[href*="/collections/not-for-website"]),
+.card-wrapper:has(a[href*="collections%2Fnot-for-website"]),
+li:has(a[href*="/collections/not-for-website"]),
+li:has(a[href*="collections%2Fnot-for-website"]) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Hide from search results */
+.predictive-search__item:has(a[href*="/collections/not-for-website"]),
+.predictive-search__item:has(a[href*="collections%2Fnot-for-website"]) {
+  display: none !important;
+}
+
+/* Additional selectors for different theme structures */
+.product-item:has(a[href*="/collections/not-for-website"]),
+.grid__item:has(a[href*="/collections/not-for-website"]),
+.collection-product-card:has(a[href*="/collections/not-for-website"]) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
