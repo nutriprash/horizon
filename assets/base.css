@@ -4156,8 +4156,6 @@ text-component {
 
 
 
-
-
 /* Completely hide all component products from "not for website" collection */
 /* Products remain published for gift box builder but invisible to customers */
 
@@ -4176,15 +4174,19 @@ text-component {
 .card-wrapper:has(a[href*="/products/badam-flower"]),
 .card-wrapper:has(a[href*="/products/date-mukhwas-1"]),
 .card-wrapper:has(a[href*="/products/gond-badam-laddoo-jaggery-small"]),
+.card-wrapper:has(a[href*="/products/mamra-badam-katli-sq"]),
 .card-wrapper:has(a[href*="/products/mamra-badam-flowe"]),
 .card-wrapper:has(a[href*="/products/besan-laddoo-1"]),
 .card-wrapper:has(a[href*="/products/besan-chakkai"]),
 .card-wrapper:has(a[href*="/products/multi-seed-berry-balls"]),
 .card-wrapper:has(a[href*="/products/kaju-flower"]),
 .card-wrapper:has(a[href*="/products/kesariya-badam-katli-sq-1"]),
+.card-wrapper:has(a[href*="/products/medjool-date-with-roasted-pistachio"]),
+.card-wrapper:has(a[href*="/products/medjool-date-with-roasted-almonds"]),
 .card-wrapper:has(a[href*="/products/walnut-nolen-gur-peda"]),
 .card-wrapper:has(a[href*="/products/walnut-anjeer-pista"]),
 .card-wrapper:has(a[href*="/products/pishori-pista-ball"]),
+.card-wrapper:has(a[href*="/products/crushed-almond-delight-1"]),
 .card-wrapper:has(a[href*="/products/walnut-apricot-with-rasins"]),
 .card-wrapper:has(a[href*="/products/crunch-badam-ball"]),
 .card-wrapper:has(a[href*="/products/fancy-pista-disc"]),
@@ -4203,11 +4205,6 @@ text-component {
 .card-wrapper:has(a[href*="/products/gond-badam-jaggery-big"]),
 .card-wrapper:has(a[href*="/products/walnut-anjeer-with-pishori-pista"]),
 .card-wrapper:has(a[href*="/products/kaju-modak"]),
-.card-wrapper:has(a[href*="/products/crushed-almond-delight"]),
-.card-wrapper:has(a[href*="/products/date"]),
-.card-wrapper:has(a[href*="/products/others"]),
-.card-wrapper:has(a[href*="/products/item-personalization"]),
-.card-wrapper:has(a[href*="/products/customise-jars"]),
 li:has(a[href*="/products/date-dry-fruit"]),
 li:has(a[href*="/products/rose-almond-pistachio"]),
 li:has(a[href*="/products/pishori-pista-lodge"]),
@@ -4222,15 +4219,19 @@ li:has(a[href*="/products/walnut-date-coco"]),
 li:has(a[href*="/products/badam-flower"]),
 li:has(a[href*="/products/date-mukhwas-1"]),
 li:has(a[href*="/products/gond-badam-laddoo-jaggery-small"]),
+li:has(a[href*="/products/mamra-badam-katli-sq"]),
 li:has(a[href*="/products/mamra-badam-flowe"]),
 li:has(a[href*="/products/besan-laddoo-1"]),
 li:has(a[href*="/products/besan-chakkai"]),
 li:has(a[href*="/products/multi-seed-berry-balls"]),
 li:has(a[href*="/products/kaju-flower"]),
 li:has(a[href*="/products/kesariya-badam-katli-sq-1"]),
+li:has(a[href*="/products/medjool-date-with-roasted-pistachio"]),
+li:has(a[href*="/products/medjool-date-with-roasted-almonds"]),
 li:has(a[href*="/products/walnut-nolen-gur-peda"]),
 li:has(a[href*="/products/walnut-anjeer-pista"]),
 li:has(a[href*="/products/pishori-pista-ball"]),
+li:has(a[href*="/products/crushed-almond-delight-1"]),
 li:has(a[href*="/products/walnut-apricot-with-rasins"]),
 li:has(a[href*="/products/crunch-badam-ball"]),
 li:has(a[href*="/products/fancy-pista-disc"]),
@@ -4248,12 +4249,7 @@ li:has(a[href*="/products/fox-nut-oats-laddoo-kg"]),
 li:has(a[href*="/products/gond-badam-laddoo-big"]),
 li:has(a[href*="/products/gond-badam-jaggery-big"]),
 li:has(a[href*="/products/walnut-anjeer-with-pishori-pista"]),
-li:has(a[href*="/products/kaju-modak"]),
-li:has(a[href*="/products/crushed-almond-delight"]),
-li:has(a[href*="/products/date"]),
-li:has(a[href*="/products/others"]),
-li:has(a[href*="/products/item-personalization"]),
-li:has(a[href*="/products/customise-jars"]) {
+li:has(a[href*="/products/kaju-modak"]) {
   display: none !important;
   visibility: hidden !important;
 }
@@ -4280,11 +4276,7 @@ li:has(a[href*="/products/customise-jars"]) {
 .predictive-search__item:has(a[href*="/products/foxnut"]),
 .predictive-search__item:has(a[href*="/products/peda"]),
 .predictive-search__item:has(a[href*="/products/kaju-modak"]),
-.predictive-search__item:has(a[href*="/products/crushed-almond-delight"]),
-.predictive-search__item:has(a[href*="/products/date"]),
-.predictive-search__item:has(a[href*="/products/others"]),
-.predictive-search__item:has(a[href*="/products/item-personalization"]),
-.predictive-search__item:has(a[href*="/products/customise-jars"]) {
+.predictive-search__item:has(a[href*="/products/medjool-date"]),
+.predictive-search__item:has(a[href*="/products/crushed-almond-delight"]) {
   display: none !important;
 }
-
