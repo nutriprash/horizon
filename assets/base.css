@@ -4203,6 +4203,11 @@ text-component {
 .card-wrapper:has(a[href*="/products/gond-badam-jaggery-big"]),
 .card-wrapper:has(a[href*="/products/walnut-anjeer-with-pishori-pista"]),
 .card-wrapper:has(a[href*="/products/kaju-modak"]),
+.card-wrapper:has(a[href*="/products/crushed-almond-delight"]),
+.card-wrapper:has(a[href*="/products/date"]),
+.card-wrapper:has(a[href*="/products/others"]),
+.card-wrapper:has(a[href*="/products/item-personalization"]),
+.card-wrapper:has(a[href*="/products/customise-jars"]),
 li:has(a[href*="/products/date-dry-fruit"]),
 li:has(a[href*="/products/rose-almond-pistachio"]),
 li:has(a[href*="/products/pishori-pista-lodge"]),
@@ -4243,7 +4248,12 @@ li:has(a[href*="/products/fox-nut-oats-laddoo-kg"]),
 li:has(a[href*="/products/gond-badam-laddoo-big"]),
 li:has(a[href*="/products/gond-badam-jaggery-big"]),
 li:has(a[href*="/products/walnut-anjeer-with-pishori-pista"]),
-li:has(a[href*="/products/kaju-modak"]) {
+li:has(a[href*="/products/kaju-modak"]),
+li:has(a[href*="/products/crushed-almond-delight"]),
+li:has(a[href*="/products/date"]),
+li:has(a[href*="/products/others"]),
+li:has(a[href*="/products/item-personalization"]),
+li:has(a[href*="/products/customise-jars"]) {
   display: none !important;
   visibility: hidden !important;
 }
@@ -4269,35 +4279,12 @@ li:has(a[href*="/products/kaju-modak"]) {
 .predictive-search__item:has(a[href*="/products/fancy"]),
 .predictive-search__item:has(a[href*="/products/foxnut"]),
 .predictive-search__item:has(a[href*="/products/peda"]),
-.predictive-search__item:has(a[href*="/products/kaju-modak"]) {
+.predictive-search__item:has(a[href*="/products/kaju-modak"]),
+.predictive-search__item:has(a[href*="/products/crushed-almond-delight"]),
+.predictive-search__item:has(a[href*="/products/date"]),
+.predictive-search__item:has(a[href*="/products/others"]),
+.predictive-search__item:has(a[href*="/products/item-personalization"]),
+.predictive-search__item:has(a[href*="/products/customise-jars"]) {
   display: none !important;
 }
 
-
-/* Hide all products from "not for website" collection */
-/* This automatically hides any product added to this collection */
-
-/* Hide product cards in grids and lists */
-.card-wrapper:has(a[href*="/collections/not-for-website"]),
-.card-wrapper:has(a[href*="collections%2Fnot-for-website"]),
-li:has(a[href*="/collections/not-for-website"]),
-li:has(a[href*="collections%2Fnot-for-website"]) {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-/* Hide from search results */
-.predictive-search__item:has(a[href*="/collections/not-for-website"]),
-.predictive-search__item:has(a[href*="collections%2Fnot-for-website"]) {
-  display: none !important;
-}
-
-/* Additional selectors for different theme structures */
-.product-item:has(a[href*="/collections/not-for-website"]),
-.grid__item:has(a[href*="/collections/not-for-website"]),
-.collection-product-card:has(a[href*="/collections/not-for-website"]) {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-+
