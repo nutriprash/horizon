@@ -136,14 +136,14 @@
                     >
                       {{- item.product.title -}}
                     </a>
-                    {%- comment -%} GIFT BAG BUTTON - ADD THIS {%- endcomment -%}
-{%- if item.product.metafields.custom.gift_bag_product != blank -%}
-  {%- assign gift_bag = item.product.metafields.custom.gift_bag_product -%}
+                    {%- comment -%} GIFT BAG BUTTON - CORRECTED VERSION {%- endcomment -%}
+{%- assign gift_bag = item.product.metafields.custom.gift_bag_product.value -%}
+{%- if gift_bag -%}
   <div class="gift-bag-prompt">
     <button type="button" 
             class="gift-bag-trigger" 
-            data-gift-bag-id="{{ gift_bag.variants.first.id }}"
-            data-gift-bag-title="{{ gift_bag.title }}"
+            data-gift-bag-id="{{ gift_bag.selected_or_first_available_variant.id }}"
+            data-gift-bag-title="{{ gift_bag.title | escape }}"
             data-gift-bag-price="{{ gift_bag.price | money }}">
       🎁 Add Gift Bag?
     </button>
