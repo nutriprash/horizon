@@ -253,11 +253,12 @@ if (!customElements.get('cart-items-component')) {
 
 
 // ========================================
-// GIFT BAG POPUP FUNCTIONALITY - ADDED BY YOU
+// GIFT BAG POPUP FUNCTIONALITY - HORIZON THEME VERSION
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
+
+function initGiftBagPopup() {
   const modal = document.getElementById('gift-bag-modal');
-  if (!modal) return; // Exit if modal doesn't exist
+  if (!modal) return;
   
   const overlay = modal.querySelector('.gift-bag-modal-overlay');
   const closeBtn = modal.querySelector('.gift-bag-modal-close');
@@ -282,51 +283,62 @@ document.addEventListener('DOMContentLoaded', function() {
     currentGiftBagId = null;
   }
   
-  // Add click event to all "Add Gift Bag?" buttons
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('gift-bag-trigger')) {
-      const giftBagId = e.target.getAttribute('data-gift-bag-id');
-      const giftBagTitle = e.target.getAttribute('data-gift-bag-title');
-      const giftBagPrice = e.target.getAttribute('data-gift-bag-price');
+  // Listen for clicks on gift bag trigger buttons
+  document.body.addEventListener('click', function(e) {
+    if (e.target.closest('.gift-bag-trigger')) {
+      e.preventDefault();
+      const trigger = e.target.closest('.gift-bag-trigger');
+      const giftBagId = trigger.getAttribute('data-gift-bag-id');
+      const giftBagTitle = trigger.getAttribute('data-gift-bag-title');
+      const giftBagPrice = trigger.getAttribute('data-gift-bag-price');
       openModal(giftBagId, giftBagTitle, giftBagPrice);
     }
   });
   
   // Close modal events
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (overlay) overlay.addEventListener('click', closeModal);
-  if (noBtn) noBtn.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
+  if (overlay) overlay.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
+  if (noBtn) noBtn.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
   
-  // Add gift bag to cart
+  // Add gift bag to cart - USING FORM SUBMISSION METHOD
   if (yesBtn) {
-    yesBtn.addEventListener('click', function() {
-      if (!currentGiftBagId) return;
+    yesBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      if (!currentGiftBagId) {
+        alert('Error: No gift bag selected');
+        return;
+      }
       
       yesBtn.textContent = 'Adding...';
       yesBtn.disabled = true;
       
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: currentGiftBagId,
-          quantity: 1
-        })
-      })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        window.location.reload();
-      })
-      .catch(function(error) {
-        console.error('Error:', error);
-        alert('Sorry, there was an error. Please try again.');
-        yesBtn.textContent = 'Yes, Add It!';
-        yesBtn.disabled = false;
-      });
+      // Create a hidden form and submit it
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/cart/add';
+      
+      const idInput = document.createElement('input');
+      idInput.type = 'hidden';
+      idInput.name = 'id';
+      idInput.value = currentGiftBagId;
+      
+      const qtyInput = document.createElement('input');
+      qtyInput.type = 'hidden';
+      qtyInput.name = 'quantity';
+      qtyInput.value = '1';
+      
+      form.appendChild(idInput);
+      form.appendChild(qtyInput);
+      document.body.appendChild(form);
+      form.submit();
     });
   }
-});
+}
+
+// Initialize
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGiftBagPopup);
+} else {
+  initGiftBagPopup();
+}
