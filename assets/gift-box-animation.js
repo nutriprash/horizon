@@ -16,58 +16,82 @@
   
   const ANIMATION_DURATION = 3000;
   
-  let animationLoaded = false;
   let lottieAnimation;
   
   function loadAnimation() {
-    if (animationLoaded) return;
-    
     const animContainer = document.getElementById('lottie-animation');
-    if (!animContainer) return;
+    if (!animContainer) {
+      console.log('Animation container not found');
+      return;
+    }
     
-    lottieAnimation = lottie.loadAnimation({
-      container: animContainer,
-      renderer: 'svg',
-      loop: false,
-      autoplay: false,
-      path: '{{ "Confetti.json" | asset_url }}'
-    });
+    // Destroy existing animation if any
+    if (lottieAnimation) {
+      lottieAnimation.destroy();
+    }
     
-    animationLoaded = true;
+    try {
+      lottieAnimation = lottie.loadAnimation({
+        container: animContainer,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'https://lottie.host/52b2ae88-d498-417d-81ed-1afb5ddd136f/kGGTyVH36j.json'
+      });
+      
+      console.log('Lottie animation loaded successfully');
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
   }
   
   function isGiftBox(productHandle) {
-    // Check if product handle matches any gift box collection
     return GIFT_BOX_COLLECTIONS.some(collection => 
       productHandle && productHandle.includes(collection)
     );
   }
   
   function showAnimation() {
+    console.log('Showing animation...');
     const overlay = document.getElementById('gift-box-animation-overlay');
-    if (!overlay) return;
+    if (!overlay) {
+      console.log('Overlay not found');
+      return;
+    }
     
     overlay.style.display = 'flex';
-    lottieAnimation.goToAndPlay(0, true);
+    
+    if (lottieAnimation) {
+      lottieAnimation.goToAndPlay(0, true);
+      console.log('Animation playing');
+    } else {
+      console.log('Animation not loaded, loading now...');
+      loadAnimation();
+      setTimeout(() => {
+        if (lottieAnimation) {
+          lottieAnimation.goToAndPlay(0, true);
+        }
+      }, 500);
+    }
     
     setTimeout(() => {
       overlay.style.display = 'none';
+      console.log('Animation hidden');
     }, ANIMATION_DURATION);
   }
   
-  // Fetch product details to check collections
   async function checkProductCollections(productId) {
     try {
       const response = await fetch(`/products/${productId}.js`);
       const product = await response.json();
       
-      // Check if product belongs to any gift box collection
       if (product.collections) {
         const belongsToGiftBox = product.collections.some(collection => 
           GIFT_BOX_COLLECTIONS.includes(collection.handle)
         );
         
         if (belongsToGiftBox) {
+          console.log('Product belongs to gift box collection');
           showAnimation();
         }
       }
@@ -77,9 +101,9 @@
   }
   
   document.addEventListener('DOMContentLoaded', function() {
+    console.log('Gift box animation script loaded');
     loadAnimation();
     
-    // Method 1: Intercept fetch requests to /cart/add.js
     const originalFetch = window.fetch;
     window.fetch = function(...args) {
       const url = args[0];
@@ -88,9 +112,9 @@
         return originalFetch.apply(this, args).then(response => {
           if (response.ok) {
             response.clone().json().then(data => {
+              console.log('Product added to cart:', data);
               const productHandle = data.handle || '';
               
-              // Check by handle or fetch full product data
               if (isGiftBox(productHandle)) {
                 showAnimation();
               } else if (data.product_id) {
@@ -105,22 +129,17 @@
       return originalFetch.apply(this, args);
     };
     
-    // Method 2: Listen for form submissions (for themes that use forms)
     document.addEventListener('submit', function(e) {
       const form = e.target;
       if (form && form.action && form.action.includes('/cart/add')) {
-        const productIdInput = form.querySelector('[name="id"]');
-        if (productIdInput) {
-          const variantId = productIdInput.value;
-          // Get product handle from the page if available
-          const productHandle = window.location.pathname.split('/').pop();
-          
-          setTimeout(() => {
-            if (isGiftBox(productHandle)) {
-              showAnimation();
-            }
-          }, 500);
-        }
+        const productHandle = window.location.pathname.split('/').pop();
+        
+        setTimeout(() => {
+          if (isGiftBox(productHandle)) {
+            console.log('Gift box detected from form submission');
+            showAnimation();
+          }
+        }, 500);
       }
     });
   });
