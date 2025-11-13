@@ -253,7 +253,7 @@ if (!customElements.get('cart-items-component')) {
 
 
 // ========================================
-// GIFT BAG POPUP FUNCTIONALITY - HORIZON THEME VERSION
+// GIFT BAG POPUP FUNCTIONALITY - FIXED VERSION
 // ========================================
 
 function initGiftBagPopup() {
@@ -271,7 +271,9 @@ function initGiftBagPopup() {
   // Function to open modal
   function openModal(giftBagId, giftBagTitle, giftBagPrice) {
     currentGiftBagId = giftBagId;
-    priceDisplay.textContent = giftBagTitle + ' - ' + giftBagPrice;
+    // Remove HTML tags from price
+    var cleanPrice = giftBagPrice.replace(/<[^>]*>/g, '');
+    priceDisplay.textContent = giftBagTitle + ' - ' + cleanPrice;
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
@@ -296,9 +298,26 @@ function initGiftBagPopup() {
   });
   
   // Close modal events
-  if (closeBtn) closeBtn.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
-  if (overlay) overlay.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
-  if (noBtn) noBtn.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+  
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+  
+  if (noBtn) {
+    noBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeModal();
+    });
+  }
   
   // Add gift bag to cart - USING FORM SUBMISSION METHOD
   if (yesBtn) {
