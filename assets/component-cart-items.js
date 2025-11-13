@@ -249,3 +249,84 @@ class CartItemsComponent extends Component {
 if (!customElements.get('cart-items-component')) {
   customElements.define('cart-items-component', CartItemsComponent);
 }
+
+
+
+// ========================================
+// GIFT BAG POPUP FUNCTIONALITY - ADDED BY YOU
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('gift-bag-modal');
+  if (!modal) return; // Exit if modal doesn't exist
+  
+  const overlay = modal.querySelector('.gift-bag-modal-overlay');
+  const closeBtn = modal.querySelector('.gift-bag-modal-close');
+  const yesBtn = modal.querySelector('.gift-bag-btn-yes');
+  const noBtn = modal.querySelector('.gift-bag-btn-no');
+  const priceDisplay = modal.querySelector('.gift-bag-price');
+  
+  let currentGiftBagId = null;
+  
+  // Function to open modal
+  function openModal(giftBagId, giftBagTitle, giftBagPrice) {
+    currentGiftBagId = giftBagId;
+    priceDisplay.textContent = giftBagTitle + ' - ' + giftBagPrice;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Function to close modal
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    currentGiftBagId = null;
+  }
+  
+  // Add click event to all "Add Gift Bag?" buttons
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('gift-bag-trigger')) {
+      const giftBagId = e.target.getAttribute('data-gift-bag-id');
+      const giftBagTitle = e.target.getAttribute('data-gift-bag-title');
+      const giftBagPrice = e.target.getAttribute('data-gift-bag-price');
+      openModal(giftBagId, giftBagTitle, giftBagPrice);
+    }
+  });
+  
+  // Close modal events
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (overlay) overlay.addEventListener('click', closeModal);
+  if (noBtn) noBtn.addEventListener('click', closeModal);
+  
+  // Add gift bag to cart
+  if (yesBtn) {
+    yesBtn.addEventListener('click', function() {
+      if (!currentGiftBagId) return;
+      
+      yesBtn.textContent = 'Adding...';
+      yesBtn.disabled = true;
+      
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: currentGiftBagId,
+          quantity: 1
+        })
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        window.location.reload();
+      })
+      .catch(function(error) {
+        console.error('Error:', error);
+        alert('Sorry, there was an error. Please try again.');
+        yesBtn.textContent = 'Yes, Add It!';
+        yesBtn.disabled = false;
+      });
+    });
+  }
+});
