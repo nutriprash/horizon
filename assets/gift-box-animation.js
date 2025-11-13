@@ -1,5 +1,4 @@
 (function() {
-  // List of collection handles that should trigger the animation
   const GIFT_BOX_COLLECTIONS = [
     '4-pc-box',
     '6-pc-box',
@@ -14,35 +13,41 @@
     '9-12-assorted-sweet'
   ];
   
-  const ANIMATION_DURATION = 3000;
+  const ANIMATION_DURATION = 4000;
+  let lottieAnimation = null;
+  let animationReady = false;
   
-  let lottieAnimation;
-  
-  function loadAnimation() {
+  function initAnimation() {
     const animContainer = document.getElementById('lottie-animation');
-    if (!animContainer) {
-      console.log('Animation container not found');
+    if (!animContainer) return;
+    
+    // Make sure lottie library is loaded
+    if (typeof lottie === 'undefined') {
+      console.error('Lottie library not loaded');
       return;
     }
     
-    // Destroy existing animation if any
-    if (lottieAnimation) {
-      lottieAnimation.destroy();
-    }
+    // Clear container
+    animContainer.innerHTML = '';
     
-    try {
-      lottieAnimation = lottie.loadAnimation({
-        container: animContainer,
-        renderer: 'svg',
-        loop: false,
-        autoplay: false,
-        path: 'https://lottie.host/52b2ae88-d498-417d-81ed-1afb5ddd136f/kGGTyVH36j.json'
+    // Load animation from your uploaded file
+    fetch('/cdn/shop/t/2/assets/Confetti.json')
+      .then(response => response.json())
+      .then(animationData => {
+        lottieAnimation = lottie.loadAnimation({
+          container: animContainer,
+          renderer: 'svg',
+          loop: false,
+          autoplay: false,
+          animationData: animationData
+        });
+        
+        animationReady = true;
+        console.log('Animation loaded and ready');
+      })
+      .catch(error => {
+        console.error('Error loading animation:', error);
       });
-      
-      console.log('Lottie animation loaded successfully');
-    } catch (error) {
-      console.error('Error loading animation:', error);
-    }
   }
   
   function isGiftBox(productHandle) {
@@ -54,24 +59,15 @@
   function showAnimation() {
     console.log('Showing animation...');
     const overlay = document.getElementById('gift-box-animation-overlay');
-    if (!overlay) {
-      console.log('Overlay not found');
-      return;
-    }
+    if (!overlay) return;
     
     overlay.style.display = 'flex';
     
-    if (lottieAnimation) {
+    if (animationReady && lottieAnimation) {
       lottieAnimation.goToAndPlay(0, true);
       console.log('Animation playing');
     } else {
-      console.log('Animation not loaded, loading now...');
-      loadAnimation();
-      setTimeout(() => {
-        if (lottieAnimation) {
-          lottieAnimation.goToAndPlay(0, true);
-        }
-      }, 500);
+      console.log('Animation not ready yet');
     }
     
     setTimeout(() => {
@@ -91,7 +87,6 @@
         );
         
         if (belongsToGiftBox) {
-          console.log('Product belongs to gift box collection');
           showAnimation();
         }
       }
@@ -100,10 +95,15 @@
     }
   }
   
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('Gift box animation script loaded');
-    loadAnimation();
-    
+  // Wait for everything to load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimation);
+  } else {
+    initAnimation();
+  }
+  
+  // Intercept add to cart
+  window.addEventListener('load', function() {
     const originalFetch = window.fetch;
     window.fetch = function(...args) {
       const url = args[0];
@@ -112,7 +112,6 @@
         return originalFetch.apply(this, args).then(response => {
           if (response.ok) {
             response.clone().json().then(data => {
-              console.log('Product added to cart:', data);
               const productHandle = data.handle || '';
               
               if (isGiftBox(productHandle)) {
