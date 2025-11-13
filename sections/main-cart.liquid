@@ -1,5 +1,3 @@
-
-
 <cart-items-component
   class="cart-items-component"
   data-section-id="{{ section.id }}"
@@ -31,6 +29,25 @@
       </div>
     </div>
   </div>
+
+  {%- comment -%} GIFT BAG POPUP MODAL - ADDED BY YOU {%- endcomment -%}
+  {%- unless cart.empty? -%}
+    <div id="gift-bag-modal" class="gift-bag-modal" style="display: none;">
+      <div class="gift-bag-modal-overlay"></div>
+      <div class="gift-bag-modal-content">
+        <button class="gift-bag-modal-close" aria-label="Close">&times;</button>
+        <div class="gift-bag-modal-body">
+          <h3 style="margin: 0 0 16px; font-size: 24px;">🎁 Add a Gift Bag?</h3>
+          <p style="margin: 0 0 12px; color: #666;">Make your gift extra special with our premium gift bag!</p>
+          <p class="gift-bag-price" style="font-weight: bold; font-size: 18px; margin: 0 0 24px;"></p>
+          <div class="gift-bag-modal-actions" style="display: flex; gap: 12px;">
+            <button class="gift-bag-btn gift-bag-btn-yes">Yes, Add It!</button>
+            <button class="gift-bag-btn gift-bag-btn-no">No, Thanks</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
 </cart-items-component>
 
 {% stylesheet %}
@@ -108,6 +125,152 @@
   @media screen and (width >= 1400px) {
     .cart-page {
       grid-template-columns: 1fr var(--sidebar-width);
+    }
+  }
+
+  /* ========================================
+     GIFT BAG POPUP STYLES - ADDED BY YOU
+     ======================================== */
+  
+  .gift-bag-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #f8f8f8;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+  }
+
+  .gift-bag-trigger:hover {
+    background: #fff;
+    border-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .gift-bag-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+  }
+
+  .gift-bag-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+
+  .gift-bag-modal-content {
+    position: relative;
+    max-width: 500px;
+    margin: 10% auto;
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .gift-bag-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    transition: color 0.2s ease;
+  }
+
+  .gift-bag-modal-close:hover {
+    color: #333;
+  }
+
+  .gift-bag-modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .gift-bag-btn {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .gift-bag-btn-yes {
+    background: #333;
+    color: white;
+  }
+
+  .gift-bag-btn-yes:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .gift-bag-btn-yes:disabled {
+    background: #999;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .gift-bag-btn-no {
+    background: #f0f0f0;
+    color: #333;
+  }
+
+  .gift-bag-btn-no:hover {
+    background: #e0e0e0;
+  }
+
+  @media (max-width: 768px) {
+    .gift-bag-modal-content {
+      margin: 20% 16px;
+      padding: 24px;
+    }
+    
+    .gift-bag-modal-actions {
+      flex-direction: column;
+    }
+    
+    .gift-bag-btn {
+      width: 100%;
     }
   }
 {% endstylesheet %}
