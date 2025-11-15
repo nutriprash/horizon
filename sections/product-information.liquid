@@ -254,13 +254,39 @@
     --sticky-header-offset: var(--header-height);
   }
 {% endstylesheet %}
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Get all variant data from the product
   const productJson = {{ product | json }};
   const variants = productJson.variants;
-  const selects = document.querySelectorAll('.product-form__input select');
+  
+  // Try multiple possible selectors
+  const possibleSelectors = [
+    '.product-form__input select',
+    'select[name="options"]',
+    'select.product-variant-select',
+    '.variant-select select',
+    'select[id*="option"]',
+    '.product-form select',
+    'select'
+  ];
+  
+  let selects = null;
+  
+  // Find which selector works
+  for (let selector of possibleSelectors) {
+    const found = document.querySelectorAll(selector);
+    if (found.length > 0) {
+      console.log('Found selects with:', selector, found);
+      selects = found;
+      break;
+    }
+  }
+  
+  if (!selects || selects.length === 0) {
+    console.error('No select elements found!');
+    return;
+  }
   
   // Get currently selected options
   function getSelectedOptions() {
@@ -294,6 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isAvailable) {
           option.style.display = 'none';
           option.disabled = true;
+          console.log('Hiding option:', option.value);
         } else {
           option.style.display = 'block';
           option.disabled = false;
