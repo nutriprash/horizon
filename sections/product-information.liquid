@@ -256,23 +256,22 @@
 {% endstylesheet %}
 
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   
-  function hideUnavailableVariants(productData) {
-    // Use passed product data or fall back to page product
-    const variants = productData?.variants || {{ product.variants | json }};
+  const variants = {{ product.variants | json }};
+  let isUpdating = false;
+  
+  function hideUnavailableVariants() {
+    if (isUpdating) return;
+    isUpdating = true;
     
-    // Find all select dropdowns in the current context
+    // Find all select dropdowns
     const selects = document.querySelectorAll('select[name^="options"]');
     
-    if (selects.length === 0) return;
-    
-    // Get currently selected options
-    function getSelectedOptions() {
-      return Array.from(selects).map(select => select.value);
+    if (selects.length === 0) {
+      isUpdating = false;
+      return;
     }
-    
-    const selectedOptions = getSelectedOptions();
     
     selects.forEach((select, optionIndex) => {
       const options = select.querySelectorAll('option');
@@ -285,27 +284,9 @@
           return;
         }
         
-        // If option text already contains "Unavailable", hide it
+        // SIMPLE RULE: If option text contains "- Unavailable", hide it
+        // Otherwise, show it
         if (option.textContent.includes('- Unavailable')) {
-          option.style.display = 'none';
-          option.disabled = true;
-          return;
-        }
-        
-        // Build test options array
-        const testOptions = [...selectedOptions];
-        testOptions[optionIndex] = option.value;
-        
-        // Check if any variant with these options is available
-        const isAvailable = variants.some(variant => {
-          const matches = testOptions.every((val, i) => 
-            !val || val === '' || variant.options[i] === val
-          );
-          return matches && variant.available;
-        });
-        
-        // Only hide if not available
-        if (!isAvailable) {
           option.style.display = 'none';
           option.disabled = true;
         } else {
@@ -314,39 +295,39 @@
         }
       });
     });
+    
+    isUpdating = false;
   }
   
   // Run on page load
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => hideUnavailableVariants(), 200);
-  });
+  setTimeout(hideUnavailableVariants, 200);
   
-  // Watch for changes in select dropdowns
+  // Watch for changes
+  const productForm = document.querySelector('.product-form, form[action*="/cart/add"]');
+  
+  if (productForm) {
+    const observer = new MutationObserver(function(mutations) {
+      setTimeout(hideUnavailableVariants, 50);
+    });
+    
+    observer.observe(productForm, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+  // Listen for select changes
   document.addEventListener('change', function(e) {
     if (e.target.matches('select[name^="options"]')) {
-      setTimeout(() => hideUnavailableVariants(), 50);
+      setTimeout(hideUnavailableVariants, 50);
     }
   });
   
-  // Watch for modal/popup opens (Quick Add)
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
-        if (node.nodeType === 1 && (node.matches('.quick-add, [role="dialog"], .modal') || node.querySelector('.quick-add, [role="dialog"], .modal'))) {
-          setTimeout(() => hideUnavailableVariants(), 300);
-        }
-      });
-    });
-  });
+  // Re-run periodically
+  setInterval(hideUnavailableVariants, 500);
   
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-  
-})();
+});
 </script>
-
 
 {% schema %}
 {
