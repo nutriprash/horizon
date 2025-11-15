@@ -426,3 +426,105 @@
     }
   }
 {% endstylesheet %}
+
+<script>
+(function() {
+  
+  function hideUnavailableVariantsInModal() {
+    // Find all select dropdowns in quick-add modal
+    const modal = document.querySelector('quick-add-modal, .quick-add-modal, [id*="quick-add"]');
+    if (!modal) return;
+    
+    const selects = modal.querySelectorAll('select[name^="options"]');
+    if (selects.length === 0) return;
+    
+    // Get product data from the modal's script tag or data attribute
+    let variants = [];
+    const productScript = modal.querySelector('script[type="application/json"]');
+    if (productScript) {
+      try {
+        const productData = JSON.parse(productScript.textContent);
+        variants = productData.variants || [];
+      } catch(e) {}
+    }
+    
+    if (variants.length === 0) return;
+    
+    function getSelectedOptions() {
+      return Array.from(selects).map(select => select.value);
+    }
+    
+    const selectedOptions = getSelectedOptions();
+    
+    selects.forEach((select, optionIndex) => {
+      const options = select.querySelectorAll('option');
+      
+      options.forEach(option => {
+        // Skip empty/placeholder options
+        if (!option.value || option.value === '') {
+          option.style.display = 'block';
+          option.disabled = false;
+          return;
+        }
+        
+        // If option text contains "Unavailable", hide it immediately
+        if (option.textContent.includes('- Unavailable')) {
+          option.style.display = 'none';
+          option.disabled = true;
+          return;
+        }
+        
+        // Build test options array
+        const testOptions = [...selectedOptions];
+        testOptions[optionIndex] = option.value;
+        
+        // Check if any variant with these options is available
+        const isAvailable = variants.some(variant => {
+          const matches = testOptions.every((val, i) => 
+            !val || val === '' || variant.options[i] === val
+          );
+          return matches && variant.available;
+        });
+        
+        // Hide or show the option
+        if (!isAvailable) {
+          option.style.display = 'none';
+          option.disabled = true;
+        } else {
+          option.style.display = 'block';
+          option.disabled = false;
+        }
+      });
+    });
+  }
+  
+  // Run when modal opens
+  document.addEventListener('modalOpened', hideUnavailableVariantsInModal);
+  
+  // Watch for modal appearing in DOM
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1 && (node.matches('quick-add-modal, .quick-add-modal') || node.querySelector('quick-add-modal, .quick-add-modal'))) {
+          setTimeout(hideUnavailableVariantsInModal, 100);
+          setTimeout(hideUnavailableVariantsInModal, 300);
+          setTimeout(hideUnavailableVariantsInModal, 500);
+        }
+      });
+    });
+  });
+  
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+  
+  // Listen for select changes in modal
+  document.addEventListener('change', function(e) {
+    if (e.target.matches('quick-add-modal select, .quick-add-modal select')) {
+      setTimeout(hideUnavailableVariantsInModal, 50);
+    }
+  });
+  
+})();
+</script>
