@@ -30,24 +30,72 @@
     </div>
   </div>
 
-  {%- comment -%} GIFT BAG POPUP MODAL - ADDED BY YOU {%- endcomment -%}
+  {%- comment -%} POPUP 1: GIFT BAG MODAL {%- endcomment -%}
   {%- unless cart.empty? -%}
-    <div id="gift-bag-modal" class="gift-bag-modal" style="display: none;">
-      <div class="gift-bag-modal-overlay"></div>
-      <div class="gift-bag-modal-content">
-        <button class="gift-bag-modal-close" aria-label="Close">&times;</button>
-        <div class="gift-bag-modal-body">
+    <div id="gift-bag-modal" class="gift-addon-modal" style="display: none;">
+      <div class="gift-addon-modal-overlay"></div>
+      <div class="gift-addon-modal-content">
+        <button class="gift-addon-modal-close" aria-label="Close">&times;</button>
+        <div class="gift-addon-modal-body">
           <h3 style="margin: 0 0 16px; font-size: 24px;">🎁 Add a Gift Bag?</h3>
           <p style="margin: 0 0 12px; color: #666;">Make your gift extra special with our premium gift bag!</p>
           <p class="gift-bag-price" style="font-weight: bold; font-size: 18px; margin: 0 0 24px;"></p>
-          <div class="gift-bag-modal-actions" style="display: flex; gap: 12px;">
-            <button class="gift-bag-btn gift-bag-btn-yes">Yes, Add It!</button>
-            <button class="gift-bag-btn gift-bag-btn-no">No, Thanks</button>
+          <div class="gift-addon-modal-actions" style="display: flex; gap: 12px;">
+            <button class="gift-addon-btn gift-addon-btn-yes">Yes, Add It!</button>
+            <button class="gift-addon-btn gift-addon-btn-no">No, Thanks</button>
           </div>
         </div>
       </div>
     </div>
   {%- endunless -%}
+
+  {%- comment -%} POPUP 2: RIBBON MODAL {%- endcomment -%}
+  {%- unless cart.empty? -%}
+    <div id="ribbon-modal" class="gift-addon-modal" style="display: none;">
+      <div class="gift-addon-modal-overlay"></div>
+      <div class="gift-addon-modal-content">
+        <button class="gift-addon-modal-close" aria-label="Close">&times;</button>
+        <div class="gift-addon-modal-body">
+          <h3 style="margin: 0 0 16px; font-size: 24px;">🎀 Choose Your Ribbon</h3>
+          <p style="margin: 0 0 24px; color: #666;">Select a ribbon option:</p>
+          <div class="ribbon-options" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+            <label class="ribbon-option" style="display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer;">
+              <input type="radio" name="ribbon-choice" value="plain" data-ribbon-id="44487482867851" data-ribbon-price="30" style="width: 20px; height: 20px;">
+              <span style="flex: 1;"><strong>Plain Ribbon</strong> - ₹30</span>
+            </label>
+            <label class="ribbon-option" style="display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer;">
+              <input type="radio" name="ribbon-choice" value="flowers" data-ribbon-id="44487494828171" data-ribbon-price="120" style="width: 20px; height: 20px;">
+              <span style="flex: 1;"><strong>Ribbon with Flowers</strong> - ₹120</span>
+            </label>
+          </div>
+          <div class="gift-addon-modal-actions" style="display: flex; gap: 12px;">
+            <button class="gift-addon-btn ribbon-add-btn">Add to Cart</button>
+            <button class="gift-addon-btn gift-addon-btn-no">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+
+  {%- comment -%} POPUP 3: GIFT CARD MODAL {%- endcomment -%}
+  {%- unless cart.empty? -%}
+    <div id="gift-card-modal" class="gift-addon-modal" style="display: none;">
+      <div class="gift-addon-modal-overlay"></div>
+      <div class="gift-addon-modal-content">
+        <button class="gift-addon-modal-close" aria-label="Close">&times;</button>
+        <div class="gift-addon-modal-body">
+          <h3 style="margin: 0 0 16px; font-size: 24px;">💌 Add a Gift Card Message</h3>
+          <p style="margin: 0 0 16px; color: #666;">Write a personalized message (FREE):</p>
+          <textarea id="gift-card-message" placeholder="Write your message here..." rows="4" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; margin-bottom: 24px; font-family: inherit;"></textarea>
+          <div class="gift-addon-modal-actions" style="display: flex; gap: 12px;">
+            <button class="gift-addon-btn gift-card-add-btn">Add to Cart</button>
+            <button class="gift-addon-btn gift-addon-btn-no">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+
 </cart-items-component>
 
 {% stylesheet %}
@@ -105,7 +153,6 @@
       align-self: stretch;
       grid-template-rows: subgrid;
       padding-top: 0;
-      /* needed to support blurred effect from hero section */
       position: relative;
     }
 
@@ -128,9 +175,7 @@
     }
   }
 
-  /* ========================================
-     GIFT BAG POPUP STYLES - ADDED BY YOU
-     ======================================== */
+  /* GIFT ADD-ONS POPUP STYLES */
   
   .gift-bag-trigger {
     display: inline-flex;
@@ -154,7 +199,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
-  .gift-bag-modal {
+  .gift-addon-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -163,7 +208,7 @@
     z-index: 9999;
   }
 
-  .gift-bag-modal-overlay {
+  .gift-addon-modal-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -173,7 +218,7 @@
     backdrop-filter: blur(4px);
   }
 
-  .gift-bag-modal-content {
+  .gift-addon-modal-content {
     position: relative;
     max-width: 500px;
     margin: 10% auto;
@@ -196,7 +241,7 @@
     }
   }
 
-  .gift-bag-modal-close {
+  .gift-addon-modal-close {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -212,17 +257,17 @@
     transition: color 0.2s ease;
   }
 
-  .gift-bag-modal-close:hover {
+  .gift-addon-modal-close:hover {
     color: #333;
   }
 
-  .gift-bag-modal-actions {
+  .gift-addon-modal-actions {
     display: flex;
     gap: 12px;
     margin-top: 24px;
   }
 
-  .gift-bag-btn {
+  .gift-addon-btn {
     flex: 1;
     padding: 16px 24px;
     border: none;
@@ -233,43 +278,43 @@
     transition: all 0.3s ease;
   }
 
-  .gift-bag-btn-yes {
+  .gift-addon-btn-yes, .ribbon-add-btn, .gift-card-add-btn {
     background: #333;
     color: white;
   }
 
-  .gift-bag-btn-yes:hover {
+  .gift-addon-btn-yes:hover, .ribbon-add-btn:hover, .gift-card-add-btn:hover {
     background: #000;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
-  .gift-bag-btn-yes:disabled {
+  .gift-addon-btn-yes:disabled, .ribbon-add-btn:disabled, .gift-card-add-btn:disabled {
     background: #999;
     cursor: not-allowed;
     transform: none;
   }
 
-  .gift-bag-btn-no {
+  .gift-addon-btn-no {
     background: #f0f0f0;
     color: #333;
   }
 
-  .gift-bag-btn-no:hover {
+  .gift-addon-btn-no:hover {
     background: #e0e0e0;
   }
 
   @media (max-width: 768px) {
-    .gift-bag-modal-content {
+    .gift-addon-modal-content {
       margin: 20% 16px;
       padding: 24px;
     }
     
-    .gift-bag-modal-actions {
+    .gift-addon-modal-actions {
       flex-direction: column;
     }
     
-    .gift-bag-btn {
+    .gift-addon-btn {
       width: 100%;
     }
   }
