@@ -256,22 +256,16 @@
 {% endstylesheet %}
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
   
-  const variants = {{ product.variants | json }};
-  let isUpdating = false;
-  
-  function hideUnavailableVariants() {
-    if (isUpdating) return;
-    isUpdating = true;
+  function hideUnavailableVariants(productData) {
+    // Use passed product data or fall back to page product
+    const variants = productData?.variants || {{ product.variants | json }};
     
-    // Find all select dropdowns (including in modals/popups)
-    const selects = document.querySelectorAll('select[name^="options"], .product-form select, .quick-add select');
+    // Find all select dropdowns in the current context
+    const selects = document.querySelectorAll('select[name^="options"]');
     
-    if (selects.length === 0) {
-      isUpdating = false;
-      return;
-    }
+    if (selects.length === 0) return;
     
     // Get currently selected options
     function getSelectedOptions() {
@@ -281,23 +275,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedOptions = getSelectedOptions();
     
     selects.forEach((select, optionIndex) => {
-      // Skip ONLY the first dropdown (Variant/Sugar)
-      // Process Box Size and Style Choice
-      if (optionIndex === 0) {
-        isUpdating = false;
-        return; // Skip only the first dropdown
-      }
-      
       const options = select.querySelectorAll('option');
       
       options.forEach(option => {
         // Skip empty/placeholder options
         if (!option.value || option.value === '') {
+          option.style.display = 'block';
+          option.disabled = false;
           return;
         }
         
-        // Check if option text contains "Unavailable" - hide these
-        if (option.textContent.includes('Unavailable')) {
+        // If option text already contains "Unavailable", hide it
+        if (option.textContent.includes('- Unavailable')) {
           option.style.display = 'none';
           option.disabled = true;
           return;
@@ -315,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
           return matches && variant.available;
         });
         
-        // Hide or show the option
+        // Only hide if not available
         if (!isAvailable) {
           option.style.display = 'none';
           option.disabled = true;
@@ -325,46 +314,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     });
-    
-    isUpdating = false;
   }
   
   // Run on page load
-  setTimeout(hideUnavailableVariants, 100);
-  setTimeout(hideUnavailableVariants, 500); // Extra delay for modals
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => hideUnavailableVariants(), 200);
+  });
   
-  // Watch for any changes to the entire document (catches modals/popups)
+  // Watch for changes in select dropdowns
+  document.addEventListener('change', function(e) {
+    if (e.target.matches('select[name^="options"]')) {
+      setTimeout(() => hideUnavailableVariants(), 50);
+    }
+  });
+  
+  // Watch for modal/popup opens (Quick Add)
   const observer = new MutationObserver(function(mutations) {
-    setTimeout(hideUnavailableVariants, 50);
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1 && (node.matches('.quick-add, [role="dialog"], .modal') || node.querySelector('.quick-add, [role="dialog"], .modal'))) {
+          setTimeout(() => hideUnavailableVariants(), 300);
+        }
+      });
+    });
   });
   
   observer.observe(document.body, {
     childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ['class', 'disabled', 'style']
+    subtree: true
   });
   
-  // Listen for change events on all selects
-  document.addEventListener('change', function(e) {
-    if (e.target.matches('select')) {
-      setTimeout(hideUnavailableVariants, 50);
-    }
-  });
-  
-  // Listen for clicks (to catch Quick Add button clicks)
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('[data-quick-add], .quick-add-button, button[aria-label*="Add"]')) {
-      setTimeout(hideUnavailableVariants, 200);
-      setTimeout(hideUnavailableVariants, 500);
-    }
-  });
-  
-  // Re-run periodically to catch any missed updates
-  setInterval(hideUnavailableVariants, 500);
-  
-});
+})();
 </script>
+
 
 {% schema %}
 {
