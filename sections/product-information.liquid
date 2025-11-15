@@ -281,6 +281,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedOptions = getSelectedOptions();
     
     selects.forEach((select, optionIndex) => {
+      // IMPORTANT: Only process dropdowns AFTER the first two (skip Variant and Box Size)
+      // Adjust this number based on which dropdown you want to filter
+      if (optionIndex < 2) {
+        isUpdating = false;
+        return; // Skip the first two dropdowns
+      }
+      
       const options = select.querySelectorAll('option');
       
       options.forEach(option => {
@@ -322,7 +329,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const productForm = document.querySelector('.product-form, form[action*="/cart/add"], .product');
   
   if (productForm) {
-    // Use MutationObserver to watch for DOM changes
     const observer = new MutationObserver(function(mutations) {
       setTimeout(hideUnavailableVariants, 50);
     });
