@@ -136,20 +136,41 @@
                     >
                       {{- item.product.title -}}
                     </a>
-                    {%- comment -%} GIFT BAG BUTTON - EXCLUDE GIFT BAGS THEMSELVES {%- endcomment -%}
-{%- assign gift_bag = item.product.metafields.custom.gift_bag_product.value -%}
-{%- unless item.product.title contains 'Gift Bag' -%}
-  {%- if gift_bag -%}
-    <div class="gift-bag-prompt">
+                    {%- comment -%} GIFT ADD-ONS BUTTONS - 3 SEPARATE OPTIONS {%- endcomment -%}
+{%- unless item.product.title contains 'Gift Bag' or item.product.title contains 'Ribbon' or item.product.title contains 'Gift Card' -%}
+  <div class="gift-addons-buttons" style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+    
+    {%- comment -%} BUTTON 1: GIFT BAG {%- endcomment -%}
+    {%- assign gift_bag = item.product.metafields.custom.gift_bag_product.value -%}
+    {%- if gift_bag -%}
       <button type="button" 
-              class="gift-bag-trigger" 
+              class="gift-addon-trigger gift-bag-trigger" 
+              data-addon-type="gift-bag"
               data-gift-bag-id="{{ gift_bag.selected_or_first_available_variant.id }}"
               data-gift-bag-title="{{ gift_bag.title }}"
               data-gift-bag-price="{{ gift_bag.price | money }}">
         🎁 Add Gift Bag?
       </button>
-    </div>
-  {%- endif -%}
+    {%- endif -%}
+    
+    {%- comment -%} BUTTON 2: RIBBON (with toggle) {%- endcomment -%}
+    {%- if section.settings.show_ribbon_option -%}
+      <button type="button" 
+              class="gift-addon-trigger ribbon-trigger" 
+              data-addon-type="ribbon">
+        🎀 Add Ribbon?
+      </button>
+    {%- endif -%}
+    
+    {%- comment -%} BUTTON 3: GIFT CARD {%- endcomment -%}
+    <button type="button" 
+            class="gift-addon-trigger gift-card-trigger" 
+            data-addon-type="gift-card"
+            data-gift-card-id="44487495942283">
+      💌 Add Gift Card?
+    </button>
+    
+  </div>
 {%- endunless -%}
                   </p>
                   {% if item.product.vendor and block.settings.vendor %}
