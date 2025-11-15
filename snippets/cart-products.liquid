@@ -143,32 +143,14 @@
     {%- comment -%} BUTTON 1: GIFT BAG {%- endcomment -%}
     {%- assign gift_bag = item.product.metafields.custom.gift_bag_product.value -%}
     {%- if gift_bag -%}
-      <button type="button" 
-              class="gift-addon-trigger gift-bag-trigger" 
-              data-addon-type="gift-bag"
-              data-gift-bag-id="{{ gift_bag.selected_or_first_available_variant.id }}"
-              data-gift-bag-title="{{ gift_bag.title }}"
-              data-gift-bag-price="{{ gift_bag.price | money }}">
-        🎁 Add Gift Bag?
-      </button>
+      <button type="button" class="gift-bag-trigger" data-addon-type="gift-bag" data-gift-bag-id="{{ gift_bag.selected_or_first_available_variant.id }}" data-gift-bag-title="{{ gift_bag.title }}" data-gift-bag-price="{{ gift_bag.price | money }}" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #f8f8f8; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer;">🎁 Add Gift Bag?</button>
     {%- endif -%}
     
-    {%- comment -%} BUTTON 2: RIBBON (with toggle) {%- endcomment -%}
-    {%- if section.settings.show_ribbon_option -%}
-      <button type="button" 
-              class="gift-addon-trigger ribbon-trigger" 
-              data-addon-type="ribbon">
-        🎀 Add Ribbon?
-      </button>
-    {%- endif -%}
+    {%- comment -%} BUTTON 2: RIBBON {%- endcomment -%}
+    <button type="button" class="ribbon-trigger" data-addon-type="ribbon" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #f8f8f8; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer;">🎀 Add Ribbon?</button>
     
     {%- comment -%} BUTTON 3: GIFT CARD {%- endcomment -%}
-    <button type="button" 
-            class="gift-addon-trigger gift-card-trigger" 
-            data-addon-type="gift-card"
-            data-gift-card-id="44487495942283">
-      💌 Add Gift Card?
-    </button>
+    <button type="button" class="gift-card-trigger" data-addon-type="gift-card" data-gift-card-id="44487495942283" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #f8f8f8; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer;">💌 Add Gift Card?</button>
     
   </div>
 {%- endunless -%}
