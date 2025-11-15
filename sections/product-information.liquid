@@ -255,6 +255,63 @@
   }
 {% endstylesheet %}
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all variant data from the product
+  const productJson = {{ product | json }};
+  const variants = productJson.variants;
+  const selects = document.querySelectorAll('.product-form__input select');
+  
+  // Get currently selected options
+  function getSelectedOptions() {
+    return Array.from(selects).map(select => select.value);
+  }
+  
+  // Update which options are available based on current selections
+  function updateAvailableOptions() {
+    const selectedOptions = getSelectedOptions();
+    
+    selects.forEach((select, optionIndex) => {
+      const options = select.querySelectorAll('option');
+      
+      options.forEach(option => {
+        // Skip the placeholder option (like "Select" or empty value)
+        if (option.value === '') return;
+        
+        // Build test options array with this option value
+        const testOptions = [...selectedOptions];
+        testOptions[optionIndex] = option.value;
+        
+        // Check if any variant matches these options AND is available
+        const isAvailable = variants.some(variant => {
+          const matches = testOptions.every((val, i) => 
+            !val || variant.options[i] === val
+          );
+          return matches && variant.available;
+        });
+        
+        // Hide unavailable options completely
+        if (!isAvailable) {
+          option.style.display = 'none';
+          option.disabled = true;
+        } else {
+          option.style.display = 'block';
+          option.disabled = false;
+        }
+      });
+    });
+  }
+  
+  // Run on page load
+  updateAvailableOptions();
+  
+  // Re-run whenever any dropdown changes
+  selects.forEach(select => {
+    select.addEventListener('change', updateAvailableOptions);
+  });
+});
+</script>
+
 {% schema %}
 {
   "name": "t:names.product_information",
