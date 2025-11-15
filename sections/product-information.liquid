@@ -258,14 +258,18 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   
+  const variants = {{ product.variants | json }};
+  let isUpdating = false;
+  
   function hideUnavailableVariants() {
-    // Get variant data
-    const variants = {{ product.variants | json }};
+    if (isUpdating) return;
+    isUpdating = true;
     
     // Find all select dropdowns
     const selects = document.querySelectorAll('select[name^="options"], .product-form select');
     
-    if (!selects || selects.length === 0) {
+    if (selects.length === 0) {
+      isUpdating = false;
       return;
     }
     
@@ -274,59 +278,72 @@ document.addEventListener('DOMContentLoaded', function() {
       return Array.from(selects).map(select => select.value);
     }
     
-    // Update which options are available
-    function updateAvailableOptions() {
-      const selectedOptions = getSelectedOptions();
+    const selectedOptions = getSelectedOptions();
+    
+    selects.forEach((select, optionIndex) => {
+      const options = select.querySelectorAll('option');
       
-      selects.forEach((select, optionIndex) => {
-        const options = select.querySelectorAll('option');
+      options.forEach(option => {
+        // Skip empty/placeholder options
+        if (!option.value || option.value === '') {
+          return;
+        }
         
-        options.forEach(option => {
-          // Skip empty/placeholder options - ALWAYS keep these visible
-          if (!option.value || option.value === '' || option.textContent.includes('Select')) {
-            option.style.display = 'block';
-            option.disabled = false;
-            return;
-          }
-          
-          // Build test options array
-          const testOptions = [...selectedOptions];
-          testOptions[optionIndex] = option.value;
-          
-          // Check if any variant with these options is available
-          const isAvailable = variants.some(variant => {
-            // Match all selected options
-            const matches = testOptions.every((val, i) => 
-              !val || val === '' || variant.options[i] === val
-            );
-            return matches && variant.available;
-          });
-          
-          // Hide or show the option
-          if (!isAvailable) {
-            option.style.display = 'none';
-            option.disabled = true;
-          } else {
-            option.style.display = 'block';
-            option.disabled = false;
-          }
+        // Build test options array
+        const testOptions = [...selectedOptions];
+        testOptions[optionIndex] = option.value;
+        
+        // Check if any variant with these options is available
+        const isAvailable = variants.some(variant => {
+          const matches = testOptions.every((val, i) => 
+            !val || val === '' || variant.options[i] === val
+          );
+          return matches && variant.available;
         });
-      });
-    }
-    
-    // Run immediately
-    updateAvailableOptions();
-    
-    // Re-run when any dropdown changes
-    selects.forEach(select => {
-      select.addEventListener('change', function() {
-        setTimeout(updateAvailableOptions, 50);
+        
+        // Hide or show the option
+        if (!isAvailable) {
+          option.style.display = 'none';
+          option.disabled = true;
+        } else {
+          option.style.display = 'block';
+          option.disabled = false;
+        }
       });
     });
+    
+    isUpdating = false;
   }
   
   // Run on page load
-  setTimeout(hideUnavailableVariants, 300);
+  setTimeout(hideUnavailableVariants, 100);
+  
+  // Watch for any changes to the product form
+  const productForm = document.querySelector('.product-form, form[action*="/cart/add"], .product');
+  
+  if (productForm) {
+    // Use MutationObserver to watch for DOM changes
+    const observer = new MutationObserver(function(mutations) {
+      setTimeout(hideUnavailableVariants, 50);
+    });
+    
+    observer.observe(productForm, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'disabled']
+    });
+  }
+  
+  // Also listen for change events on all selects
+  document.addEventListener('change', function(e) {
+    if (e.target.matches('select')) {
+      setTimeout(hideUnavailableVariants, 50);
+    }
+  });
+  
+  // Re-run periodically to catch any missed updates
+  setInterval(hideUnavailableVariants, 500);
   
 });
 </script>
