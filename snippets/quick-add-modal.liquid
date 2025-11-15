@@ -427,104 +427,67 @@
   }
 {% endstylesheet %}
 
+
 <script>
 (function() {
   
-  function hideUnavailableVariantsInModal() {
-    // Find all select dropdowns in quick-add modal
-    const modal = document.querySelector('quick-add-modal, .quick-add-modal, [id*="quick-add"]');
-    if (!modal) return;
+  function hideUnavailableInQuickAdd() {
+    // Find the quick-add modal content area
+    const modalContent = document.querySelector('#quick-add-modal-content, .quick-add-modal__content');
+    if (!modalContent) return;
     
-    const selects = modal.querySelectorAll('select[name^="options"]');
+    // Find all select dropdowns inside the modal
+    const selects = modalContent.querySelectorAll('select');
     if (selects.length === 0) return;
     
-    // Get product data from the modal's script tag or data attribute
-    let variants = [];
-    const productScript = modal.querySelector('script[type="application/json"]');
-    if (productScript) {
-      try {
-        const productData = JSON.parse(productScript.textContent);
-        variants = productData.variants || [];
-      } catch(e) {}
-    }
+    let hiddenCount = 0;
     
-    if (variants.length === 0) return;
-    
-    function getSelectedOptions() {
-      return Array.from(selects).map(select => select.value);
-    }
-    
-    const selectedOptions = getSelectedOptions();
-    
-    selects.forEach((select, optionIndex) => {
+    selects.forEach(select => {
       const options = select.querySelectorAll('option');
       
       options.forEach(option => {
-        // Skip empty/placeholder options
-        if (!option.value || option.value === '') {
-          option.style.display = 'block';
-          option.disabled = false;
-          return;
-        }
-        
-        // If option text contains "Unavailable", hide it immediately
+        // If the option text contains "- Unavailable", hide it
         if (option.textContent.includes('- Unavailable')) {
           option.style.display = 'none';
           option.disabled = true;
-          return;
-        }
-        
-        // Build test options array
-        const testOptions = [...selectedOptions];
-        testOptions[optionIndex] = option.value;
-        
-        // Check if any variant with these options is available
-        const isAvailable = variants.some(variant => {
-          const matches = testOptions.every((val, i) => 
-            !val || val === '' || variant.options[i] === val
-          );
-          return matches && variant.available;
-        });
-        
-        // Hide or show the option
-        if (!isAvailable) {
-          option.style.display = 'none';
-          option.disabled = true;
-        } else {
-          option.style.display = 'block';
-          option.disabled = false;
+          hiddenCount++;
         }
       });
     });
+    
+    if (hiddenCount > 0) {
+      console.log('Hidden ' + hiddenCount + ' unavailable options in Quick Add');
+    }
   }
   
-  // Run when modal opens
-  document.addEventListener('modalOpened', hideUnavailableVariantsInModal);
-  
-  // Watch for modal appearing in DOM
+  // Watch for content being added to the modal
   const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
-        if (node.nodeType === 1 && (node.matches('quick-add-modal, .quick-add-modal') || node.querySelector('quick-add-modal, .quick-add-modal'))) {
-          setTimeout(hideUnavailableVariantsInModal, 100);
-          setTimeout(hideUnavailableVariantsInModal, 300);
-          setTimeout(hideUnavailableVariantsInModal, 500);
-        }
-      });
+    mutations.forEach(function(mutation) {
+      // Check if nodes were added to the modal content area
+      if (mutation.target.id === 'quick-add-modal-content' || 
+          mutation.target.classList.contains('quick-add-modal__content')) {
+        setTimeout(hideUnavailableInQuickAdd, 100);
+        setTimeout(hideUnavailableInQuickAdd, 300);
+        setTimeout(hideUnavailableInQuickAdd, 500);
+      }
     });
   });
   
+  // Start observing the entire document
   observer.observe(document.body, {
     childList: true,
     subtree: true
   });
   
-  // Listen for select changes in modal
+  // Also run on select changes
   document.addEventListener('change', function(e) {
-    if (e.target.matches('quick-add-modal select, .quick-add-modal select')) {
-      setTimeout(hideUnavailableVariantsInModal, 50);
+    if (e.target.matches('#quick-add-modal-content select, .quick-add-modal__content select')) {
+      setTimeout(hideUnavailableInQuickAdd, 50);
     }
   });
+  
+  // Run continuously to catch dynamic loading
+  setInterval(hideUnavailableInQuickAdd, 300);
   
 })();
 </script>
