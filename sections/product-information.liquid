@@ -254,88 +254,114 @@
     --sticky-header-offset: var(--header-height);
   }
 {% endstylesheet %}
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all variant data from the product
-  const productJson = {{ product | json }};
-  const variants = productJson.variants;
   
-  // Try multiple possible selectors
-  const possibleSelectors = [
-    '.product-form__input select',
-    'select[name="options"]',
-    'select.product-variant-select',
-    '.variant-select select',
-    'select[id*="option"]',
-    '.product-form select',
-    'select'
-  ];
-  
-  let selects = null;
-  
-  // Find which selector works
-  for (let selector of possibleSelectors) {
-    const found = document.querySelectorAll(selector);
-    if (found.length > 0) {
-      console.log('Found selects with:', selector, found);
-      selects = found;
-      break;
-    }
-  }
-  
-  if (!selects || selects.length === 0) {
-    console.error('No select elements found!');
-    return;
-  }
-  
-  // Get currently selected options
-  function getSelectedOptions() {
-    return Array.from(selects).map(select => select.value);
-  }
-  
-  // Update which options are available based on current selections
-  function updateAvailableOptions() {
-    const selectedOptions = getSelectedOptions();
+  function hideUnavailableVariants() {
+    // Get all variant data from the product
+    const productJson = {{ product | json }};
+    const variants = productJson.variants;
     
-    selects.forEach((select, optionIndex) => {
-      const options = select.querySelectorAll('option');
+    // Try multiple possible selectors
+    const possibleSelectors = [
+      '.product-form__input select',
+      'select[name="options"]',
+      'select.product-variant-select',
+      '.variant-select select',
+      'select[id*="option"]',
+      '.product-form select',
+      'select'
+    ];
+    
+    let selects = null;
+    
+    // Find which selector works
+    for (let selector of possibleSelectors) {
+      const found = document.querySelectorAll(selector);
+      if (found.length > 0) {
+        selects = found;
+        break;
+      }
+    }
+    
+    if (!selects || selects.length === 0) {
+      return;
+    }
+    
+    // Get currently selected options
+    function getSelectedOptions() {
+      return Array.from(selects).map(select => select.value);
+    }
+    
+    // Update which options are available based on current selections
+    function updateAvailableOptions() {
+      const selectedOptions = getSelectedOptions();
       
-      options.forEach(option => {
-        // Skip the placeholder option (like "Select" or empty value)
-        if (option.value === '') return;
+      selects.forEach((select, optionIndex) => {
+        const options = select.querySelectorAll('option');
         
-        // Build test options array with this option value
-        const testOptions = [...selectedOptions];
-        testOptions[optionIndex] = option.value;
-        
-        // Check if any variant matches these options AND is available
-        const isAvailable = variants.some(variant => {
-          const matches = testOptions.every((val, i) => 
-            !val || variant.options[i] === val
-          );
-          return matches && variant.available;
+        options.forEach(option => {
+          // Skip the placeholder option (like "Select" or empty value)
+          if (option.value === '') return;
+          
+          // Build test options array with this option value
+          const testOptions = [...selectedOptions];
+          testOptions[optionIndex] = option.value;
+          
+          // Check if any variant matches these options AND is available
+          const isAvailable = variants.some(variant => {
+            const matches = testOptions.every((val, i) => 
+              !val || variant.options[i] === val
+            );
+            return matches && variant.available;
+          });
+          
+          // Hide unavailable options completely
+          if (!isAvailable) {
+            option.style.display = 'none';
+            option.disabled = true;
+          } else {
+            option.style.display = 'block';
+            option.disabled = false;
+          }
         });
-        
-        // Hide unavailable options completely
-        if (!isAvailable) {
-          option.style.display = 'none';
-          option.disabled = true;
-          console.log('Hiding option:', option.value);
-        } else {
-          option.style.display = 'block';
-          option.disabled = false;
-        }
       });
+    }
+    
+    // Run on page load
+    updateAvailableOptions();
+    
+    // Re-run whenever any dropdown changes
+    selects.forEach(select => {
+      select.addEventListener('change', updateAvailableOptions);
     });
   }
   
-  // Run on page load
-  updateAvailableOptions();
+  // Run initially
+  hideUnavailableVariants();
   
-  // Re-run whenever any dropdown changes
-  selects.forEach(select => {
-    select.addEventListener('change', updateAvailableOptions);
+  // Watch for product changes (for quick view, product recommendations, etc.)
+  const observer = new MutationObserver(function(mutations) {
+    hideUnavailableVariants();
   });
+  
+  // Observe the product form for changes
+  const productForm = document.querySelector('.product-form, [data-product-form]');
+  if (productForm) {
+    observer.observe(productForm, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+  // Also listen for Shopify's variant change event
+  document.addEventListener('variant:change', hideUnavailableVariants);
+  
+  // Re-run after a short delay to catch dynamic content
+  setTimeout(hideUnavailableVariants, 500);
+  setTimeout(hideUnavailableVariants, 1000);
+  setTimeout(hideUnavailableVariants, 2000);
 });
 </script>
 
