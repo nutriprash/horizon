@@ -265,8 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isUpdating) return;
     isUpdating = true;
     
-    // Find all select dropdowns
-    const selects = document.querySelectorAll('select[name^="options"], .product-form select');
+    // Find all select dropdowns (including in modals/popups)
+    const selects = document.querySelectorAll('select[name^="options"], .product-form select, .quick-add select');
     
     if (selects.length === 0) {
       isUpdating = false;
@@ -281,11 +281,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedOptions = getSelectedOptions();
     
     selects.forEach((select, optionIndex) => {
-      // IMPORTANT: Only process dropdowns AFTER the first two (skip Variant and Box Size)
-      // Adjust this number based on which dropdown you want to filter
-      if (optionIndex < 2) {
+      // Skip ONLY the first dropdown (Variant/Sugar)
+      // Process Box Size and Style Choice
+      if (optionIndex === 0) {
         isUpdating = false;
-        return; // Skip the first two dropdowns
+        return; // Skip only the first dropdown
       }
       
       const options = select.querySelectorAll('option');
@@ -293,6 +293,13 @@ document.addEventListener('DOMContentLoaded', function() {
       options.forEach(option => {
         // Skip empty/placeholder options
         if (!option.value || option.value === '') {
+          return;
+        }
+        
+        // Check if option text contains "Unavailable" - hide these
+        if (option.textContent.includes('Unavailable')) {
+          option.style.display = 'none';
+          option.disabled = true;
           return;
         }
         
@@ -324,27 +331,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Run on page load
   setTimeout(hideUnavailableVariants, 100);
+  setTimeout(hideUnavailableVariants, 500); // Extra delay for modals
   
-  // Watch for any changes to the product form
-  const productForm = document.querySelector('.product-form, form[action*="/cart/add"], .product');
+  // Watch for any changes to the entire document (catches modals/popups)
+  const observer = new MutationObserver(function(mutations) {
+    setTimeout(hideUnavailableVariants, 50);
+  });
   
-  if (productForm) {
-    const observer = new MutationObserver(function(mutations) {
-      setTimeout(hideUnavailableVariants, 50);
-    });
-    
-    observer.observe(productForm, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['class', 'disabled']
-    });
-  }
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class', 'disabled', 'style']
+  });
   
-  // Also listen for change events on all selects
+  // Listen for change events on all selects
   document.addEventListener('change', function(e) {
     if (e.target.matches('select')) {
       setTimeout(hideUnavailableVariants, 50);
+    }
+  });
+  
+  // Listen for clicks (to catch Quick Add button clicks)
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('[data-quick-add], .quick-add-button, button[aria-label*="Add"]')) {
+      setTimeout(hideUnavailableVariants, 200);
+      setTimeout(hideUnavailableVariants, 500);
     }
   });
   
