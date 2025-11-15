@@ -177,27 +177,32 @@
 
   /* GIFT ADD-ONS POPUP STYLES */
   
-  .gift-bag-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: #f8f8f8;
-    border: 2px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 8px;
-  }
+  .gift-bag-trigger,
+.ribbon-trigger,
+.gift-card-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
 
-  .gift-bag-trigger:hover {
-    background: #fff;
-    border-color: #333;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
+.gift-bag-trigger:hover,
+.ribbon-trigger:hover,
+.gift-card-trigger:hover {
+  background: #fff;
+  border-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 
   .gift-addon-modal {
     position: fixed;
