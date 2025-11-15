@@ -259,12 +259,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   function hideUnavailableVariants() {
-    // Get variant data from the global product object (updates dynamically)
-    const productData = window.ShopifyAnalytics?.meta?.product || {{ product | json }};
-    const variants = productData.variants || {{ product.variants | json }};
+    // Get variant data
+    const variants = {{ product.variants | json }};
     
     // Find all select dropdowns
-    const selects = document.querySelectorAll('select[name^="options"], .product-form select, select[id*="Option"]');
+    const selects = document.querySelectorAll('select[name^="options"], .product-form select');
     
     if (!selects || selects.length === 0) {
       return;
@@ -283,8 +282,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const options = select.querySelectorAll('option');
         
         options.forEach(option => {
-          // Skip empty/placeholder options
-          if (!option.value || option.value === '') return;
+          // Skip empty/placeholder options - ALWAYS keep these visible
+          if (!option.value || option.value === '' || option.textContent.includes('Select')) {
+            option.style.display = 'block';
+            option.disabled = false;
+            return;
+          }
           
           // Build test options array
           const testOptions = [...selectedOptions];
@@ -294,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const isAvailable = variants.some(variant => {
             // Match all selected options
             const matches = testOptions.every((val, i) => 
-              !val || !variant.options || variant.options[i] === val
+              !val || val === '' || variant.options[i] === val
             );
             return matches && variant.available;
           });
@@ -316,31 +319,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Re-run when any dropdown changes
     selects.forEach(select => {
-      select.removeEventListener('change', updateAvailableOptions); // Prevent duplicates
-      select.addEventListener('change', updateAvailableOptions);
+      select.addEventListener('change', function() {
+        setTimeout(updateAvailableOptions, 50);
+      });
     });
   }
   
   // Run on page load
-  hideUnavailableVariants();
+  setTimeout(hideUnavailableVariants, 300);
   
-  // Re-run when variant changes (Shopify theme event)
-  document.addEventListener('change', function(e) {
-    if (e.target.matches('select[name^="options"], .product-form select')) {
-      setTimeout(hideUnavailableVariants, 100);
-    }
-  });
-  
-  // Watch for DOM changes in the product form
-  const productForm = document.querySelector('.product-form, form[action*="/cart/add"]');
-  if (productForm) {
-    const observer = new MutationObserver(hideUnavailableVariants);
-    observer.observe(productForm, {
-      childList: true,
-      subtree: true,
-      attributes: true
-    });
-  }
 });
 </script>
 
