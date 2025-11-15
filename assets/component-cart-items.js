@@ -253,86 +253,93 @@ if (!customElements.get('cart-items-component')) {
 
 
 // ========================================
-// GIFT BAG POPUP FUNCTIONALITY - FIXED VERSION
+// GIFT ADD-ONS FUNCTIONALITY - 3 POPUPS
 // ========================================
 
-function initGiftBagPopup() {
-  const modal = document.getElementById('gift-bag-modal');
-  if (!modal) return;
-  
-  const overlay = modal.querySelector('.gift-bag-modal-overlay');
-  const closeBtn = modal.querySelector('.gift-bag-modal-close');
-  const yesBtn = modal.querySelector('.gift-bag-btn-yes');
-  const noBtn = modal.querySelector('.gift-bag-btn-no');
-  const priceDisplay = modal.querySelector('.gift-bag-price');
+function initGiftAddons() {
+  // Get all modals
+  const giftBagModal = document.getElementById('gift-bag-modal');
+  const ribbonModal = document.getElementById('ribbon-modal');
+  const giftCardModal = document.getElementById('gift-card-modal');
   
   let currentGiftBagId = null;
   
-  // Function to open modal
-  function openModal(giftBagId, giftBagTitle, giftBagPrice) {
-    currentGiftBagId = giftBagId;
-    // Remove HTML tags from price
-    var cleanPrice = giftBagPrice.replace(/<[^>]*>/g, '');
-    priceDisplay.textContent = giftBagTitle + ' - ' + cleanPrice;
+  // Helper function to open modal
+  function openModal(modal) {
+    if (!modal) return;
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
   
-  // Function to close modal
-  function closeModal() {
+  // Helper function to close modal
+  function closeModal(modal) {
+    if (!modal) return;
     modal.style.display = 'none';
     document.body.style.overflow = '';
-    currentGiftBagId = null;
   }
   
-  // Listen for clicks on gift bag trigger buttons
+  // BUTTON CLICK HANDLERS
   document.body.addEventListener('click', function(e) {
+    // GIFT BAG BUTTON CLICK
     if (e.target.closest('.gift-bag-trigger')) {
       e.preventDefault();
       const trigger = e.target.closest('.gift-bag-trigger');
-      const giftBagId = trigger.getAttribute('data-gift-bag-id');
+      currentGiftBagId = trigger.getAttribute('data-gift-bag-id');
       const giftBagTitle = trigger.getAttribute('data-gift-bag-title');
       const giftBagPrice = trigger.getAttribute('data-gift-bag-price');
-      openModal(giftBagId, giftBagTitle, giftBagPrice);
+      
+      if (giftBagModal) {
+        const cleanPrice = giftBagPrice.replace(/<[^>]*>/g, '');
+        const priceDisplay = giftBagModal.querySelector('.gift-bag-price');
+        if (priceDisplay) {
+          priceDisplay.textContent = giftBagTitle + ' - ' + cleanPrice;
+        }
+        openModal(giftBagModal);
+      }
+    }
+    
+    // RIBBON BUTTON CLICK
+    if (e.target.closest('.ribbon-trigger')) {
+      e.preventDefault();
+      openModal(ribbonModal);
+    }
+    
+    // GIFT CARD BUTTON CLICK
+    if (e.target.closest('.gift-card-trigger')) {
+      e.preventDefault();
+      openModal(giftCardModal);
     }
   });
   
-  // Close modal events
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function(e) {
+  // CLOSE BUTTONS (X and Cancel/No Thanks)
+  document.querySelectorAll('.gift-addon-modal-close, .gift-addon-btn-no').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
       e.preventDefault();
-      closeModal();
+      closeModal(giftBagModal);
+      closeModal(ribbonModal);
+      closeModal(giftCardModal);
     });
-  }
+  });
   
-  if (overlay) {
-    overlay.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeModal();
+  // CLOSE ON OVERLAY CLICK
+  document.querySelectorAll('.gift-addon-modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function() {
+      closeModal(giftBagModal);
+      closeModal(ribbonModal);
+      closeModal(giftCardModal);
     });
-  }
+  });
   
-  if (noBtn) {
-    noBtn.addEventListener('click', function(e) {
+  // GIFT BAG - "YES, ADD IT!" BUTTON
+  const giftBagYesBtn = giftBagModal ? giftBagModal.querySelector('.gift-addon-btn-yes') : null;
+  if (giftBagYesBtn) {
+    giftBagYesBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      closeModal();
-    });
-  }
-  
-  // Add gift bag to cart - USING FORM SUBMISSION METHOD
-  if (yesBtn) {
-    yesBtn.addEventListener('click', function(e) {
-      e.preventDefault();
+      if (!currentGiftBagId) return;
       
-      if (!currentGiftBagId) {
-        alert('Error: No gift bag selected');
-        return;
-      }
+      giftBagYesBtn.textContent = 'Adding...';
+      giftBagYesBtn.disabled = true;
       
-      yesBtn.textContent = 'Adding...';
-      yesBtn.disabled = true;
-      
-      // Create a hidden form and submit it
       const form = document.createElement('form');
       form.method = 'POST';
       form.action = '/cart/add';
@@ -353,11 +360,93 @@ function initGiftBagPopup() {
       form.submit();
     });
   }
+  
+  // RIBBON - "ADD TO CART" BUTTON
+  const ribbonAddBtn = ribbonModal ? ribbonModal.querySelector('.ribbon-add-btn') : null;
+  if (ribbonAddBtn) {
+    ribbonAddBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const selectedRibbon = ribbonModal.querySelector('input[name="ribbon-choice"]:checked');
+      if (!selectedRibbon) {
+        alert('Please select a ribbon option');
+        return;
+      }
+      
+      const ribbonId = selectedRibbon.getAttribute('data-ribbon-id');
+      
+      ribbonAddBtn.textContent = 'Adding...';
+      ribbonAddBtn.disabled = true;
+      
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/cart/add';
+      
+      const idInput = document.createElement('input');
+      idInput.type = 'hidden';
+      idInput.name = 'id';
+      idInput.value = ribbonId;
+      
+      const qtyInput = document.createElement('input');
+      qtyInput.type = 'hidden';
+      qtyInput.name = 'quantity';
+      qtyInput.value = '1';
+      
+      form.appendChild(idInput);
+      form.appendChild(qtyInput);
+      document.body.appendChild(form);
+      form.submit();
+    });
+  }
+  
+  // GIFT CARD - "ADD TO CART" BUTTON
+  const giftCardAddBtn = giftCardModal ? giftCardModal.querySelector('.gift-card-add-btn') : null;
+  if (giftCardAddBtn) {
+    giftCardAddBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const messageInput = document.getElementById('gift-card-message');
+      const message = messageInput ? messageInput.value.trim() : '';
+      
+      if (!message) {
+        alert('Please write a message for the gift card');
+        return;
+      }
+      
+      giftCardAddBtn.textContent = 'Adding...';
+      giftCardAddBtn.disabled = true;
+      
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/cart/add';
+      
+      const idInput = document.createElement('input');
+      idInput.type = 'hidden';
+      idInput.name = 'id';
+      idInput.value = '44487495942283';
+      
+      const qtyInput = document.createElement('input');
+      qtyInput.type = 'hidden';
+      qtyInput.name = 'quantity';
+      qtyInput.value = '1';
+      
+      const messageInput2 = document.createElement('input');
+      messageInput2.type = 'hidden';
+      messageInput2.name = 'properties[Gift Card Message]';
+      messageInput2.value = message;
+      
+      form.appendChild(idInput);
+      form.appendChild(qtyInput);
+      form.appendChild(messageInput2);
+      document.body.appendChild(form);
+      form.submit();
+    });
+  }
 }
 
-// Initialize
+// Initialize when page loads
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initGiftBagPopup);
+  document.addEventListener('DOMContentLoaded', initGiftAddons);
 } else {
-  initGiftBagPopup();
+  initGiftAddons();
 }
